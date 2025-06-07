@@ -1,0 +1,9 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "contact": "Contact",
+    "blog": "Blog",
+    "login": "Login"
+  }
+}

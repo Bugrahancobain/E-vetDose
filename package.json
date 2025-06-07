@@ -1,0 +1,21 @@
+{
+  "name": "bb",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tinymce/tinymce-react": "^5.1.1",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^13.0.2",
+    "next": "15.0.3",
+    "next-intl": "^3.25.1",
+    "react": "^19.0.0-rc-66855b96-20241106",
+    "react-dom": "^19.0.0-rc-66855b96-20241106",
+    "react-icons": "^5.4.0"
+  }
+}
