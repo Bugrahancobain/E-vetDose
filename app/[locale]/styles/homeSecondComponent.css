@@ -1,0 +1,35 @@
+.homeSecondComponentMain{
+    width: 100%;
+    min-height: 100vh;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 50px;
+
+}
+
+.homeSecondComponentImageWrap{
+    width: 70%;
+    height: 80%;
+}
+
+.homeSecondComponentImage{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.homeSecondComponentBtn{
+    background-color: orange;
+    border-radius: 16px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: rgba(173, 173, 192, 0.5) 0px 7px 29px 0px;
+    transition: all 0.3s;
+}
+
+.homeSecondComponentBtn:hover{
+    box-shadow: rgba(173, 173, 192, 1) 0px 10px 35px 0px;
+}

@@ -1,0 +1,190 @@
+.pricingMain {
+    padding: 150px 0 50px 0;
+    text-align: center;
+  }
+  
+  .pricingSubTitle {
+    color: whitesmoke;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .pricingTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .pricingDesc {
+    color: #aaa;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .switchWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 3rem;
+  }
+  
+  .switchWrap span {
+    font-size: 0.95rem;
+    color: #888;
+  }
+  
+  .switchWrap .active {
+    color: orange;
+    font-weight: bold;
+  }
+  
+  .switchWrap .discount {
+    font-size: 0.8rem;
+    color: orange;
+    margin-left: 4px;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    background-color: #000000;
+    border-radius: 24px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: orange;
+    border-radius: 50%;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #444;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Cards */
+  .pricingCards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .pricingCard {
+    background-color: #111;
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.03);
+    text-align: left;
+    transition: all 0.3s ease;
+    transform: translateY(0); /* başlangıçta nötr */
+  }
+
+  .pricingCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3);
+  }
+  
+  .pricingCard h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    background-color: #111;
+
+  }
+  
+  .pricingCard h2 {
+    font-size: 2rem;
+    margin: 1rem 0 0.5rem;
+    background-color: #111;
+
+  }
+  
+  .pricingCard h2 span {
+    font-size: 1rem;
+    color: #aaa;
+    background-color: #111;
+
+  }
+
+  .pricingCard ul, .pricingCard p, .pricingCard li{
+    background-color: #111;
+
+  }
+  
+  .extra {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1rem;
+  }
+  
+  .btn {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid #888;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #ff9900;
+  }
+  
+  .btnPrimary {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: orange;
+    color: black;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  .pricingCard ul {
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.6;
+    color: #ccc;
+  }
+  
+  .pricingCard.active {
+    border: 1px solid orange;
+  }

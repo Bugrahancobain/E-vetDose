@@ -1,0 +1,97 @@
+.homeThirdComponentMain{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    height: max-content;
+    padding-bottom: 50px;
+    gap: 50px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.homeThirdComponentFirstDiv, .homeThirdComponentThirdDiv{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    align-items: start;
+    text-align: center;
+    width: 90%;
+}
+
+.homeThirdComponentFirstDiv div, .homeThirdComponentThirdDiv div{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeThirdComponentFirstDiv svg, .homeThirdComponentThirdDiv svg{
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.homeThirdComponentFirstDiv h2, .homeThirdComponentFirstDiv svg, .homeThirdComponentThirdDiv h2, .homeThirdComponentThirdDiv svg{
+    font-size: 2rem;
+}
+
+.homeThirdComponentFirstDiv span, .homeThirdComponentThirdDiv span{
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.homeThirdComponentSecondDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    width: 90%
+}
+
+.homeThirdComponentSecondDiv span{
+    background-color: white;
+    color: #247d98;
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: rgba(173, 173, 192, 0.5) 0px 3px 10px 0px;
+    transition: all 0.3s;
+}
+
+.homeThirdComponentSecondDiv span:hover{
+    box-shadow: rgba(173, 173, 192, 0.7) 0px 5px 7px 0px;
+    background-color: #d7e2e5;
+}
+
+.homeThirdComponentSecondDiv h2{
+    font-size: 3rem;
+}
+
+.homeThirdComponentSecondDiv h3{
+    font-size: 2rem;
+}
+
+.homeThirdComponentBtn{
+    background-color: orange;
+    border-radius: 16px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: rgba(173, 173, 192, 0.5) 0px 7px 29px 0px;
+    transition: all 0.3s;
+}
+
+.homeThirdComponentThirdDiv div{
+    width: 33%;
+}
+
+
+.homeThirdComponentBtn:hover{
+    box-shadow: rgba(173, 173, 192, 1) 0px 10px 35px 0px;
+
+}

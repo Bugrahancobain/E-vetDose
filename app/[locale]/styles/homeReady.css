@@ -1,0 +1,24 @@
+.homeReadyMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.homeReadyDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    padding: 50px;
+   width: 70%; 
+   border-radius: 24px;
+}
+
+.homeReadyDiv, .homeReadyDiv h2, .homeReadyDiv span{
+    
+    background-color: #154a5b !important;
+}

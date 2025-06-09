@@ -1,0 +1,84 @@
+.homeFirstComponentMain{
+    min-height: 100vh;
+    height: max-content;
+    width: 100%;
+    padding-top: 150px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.appMarketMain{
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+.appMarketDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.appMarketDiv a{
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.appMarketDiv a svg{
+font-size: 24px;
+}
+
+.starIcon svg{
+    color: orange !important;
+}
+
+.trusted{
+    background-color: white;
+    color: #247d98;
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: rgba(173, 173, 192, 0.5) 0px 7px 29px 0px;
+    transition: all 0.3s;
+}
+
+.trusted:hover{
+    box-shadow: rgba(173, 173, 192, 1) 0px 10px 30px 0px;
+    background-color: #d7e2e5;
+}
+
+.homeFirstComponentFeaturesWrap{
+    width: 90%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.homeFirstComponentFeaturesWrap h1{
+    font-size: 3rem;
+}
+
+.homeFirstComponentFeaturesWrap h2{
+    font-size: 1.25rem;
+}
+
+.homeFirstComponentFeaturesWrap a{
+    background-color: orange;
+    border-radius: 16px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: rgba(173, 173, 192, 0.5) 0px 7px 29px 0px;
+    transition: all 0.3s;
+}
+
+.homeFirstComponentFeaturesWrap a:hover{
+    box-shadow: rgba(173, 173, 192, 1) 0px 10px 35px 0px;
+}

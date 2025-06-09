@@ -18,10 +18,10 @@ export default function LanguageSwitcher() {
         <select
             value={currentLocale}
             onChange={(e) => changeLanguage(e.target.value)}
-            style={{ marginLeft: '1rem', padding: '4px 8px', borderRadius: '4px' }}
+            style={{ marginRight: '1rem', padding: '8px 12px', borderRadius: '12px', fontSize: "20px", borderColor: "white" }}
         >
-            <option value="tr">Türkçe</option>
-            <option value="en">English</option>
+            <option value="tr">🇹🇷</option>
+            <option value="en">🇬🇧</option>
         </select>
     );
 }

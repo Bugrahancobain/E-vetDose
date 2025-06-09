@@ -1,8 +1,10 @@
-import Navbar from "./components/Navbar";
+import NavbarWrapper from "./components/NavbarWrapper";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import Footer from "./components/Footer";
+import Head from "next/head";
+
 
 export default async function RootLayout({ children, params }) {
   // params.locale'i await ile çöz
@@ -11,13 +13,18 @@ export default async function RootLayout({ children, params }) {
 
   return (
     <html lang={locale}>
+      <Head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#254650" />
+      </Head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div>
-            <Navbar locale={locale} />
-            {children}
-            <Footer />
-          </div>
+
+          <NavbarWrapper locale={locale} />
+          {children}
+          <Footer locale={locale} />
+
         </NextIntlClientProvider>
       </body>
     </html>

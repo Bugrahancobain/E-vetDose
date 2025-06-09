@@ -1,0 +1,22 @@
+{
+    "name": "E-VetDose",
+    "short_name": "VetDose",
+    "description": "Veterinerler için akıllı asistan",
+    "start_url": "/tr/dashboard",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#254650",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/icons/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

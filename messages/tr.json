@@ -3,7 +3,178 @@
     "home": "Ana Sayfa",
     "about": "Hakkımızda",
     "contact": "İletişim",
+    "pricing": "Fiyatlandırma",
     "login": "Giriş Yap",
     "blog": "Blog"
+  },
+  "footer": {
+    "followUs": "Bizi Takip Et!",
+    "resources": "Kaynaklar",
+    "home": "Anasayfa",
+    "about": "Hakkımızda",
+    "blog": "Blog",
+    "contact": "İletişim",
+    "privacyPolicy": "Gizlilik Politikası",
+    "termsOfService": "Hizmet Şartları",
+    "allRights": "Tüm Hakları Saklıdır.",
+    "pricing": "Fiyatlandırma"
+  },
+  "homeFirstComponent": {
+  "apple": "Apple Store",
+  "google": "Google Play Store",
+  "trusted": "Dünya çapında 1000+ veteriner hekimi tarafından güveniliyor",
+  "title": "En başarılı veteriner klinikleri E-VetDose kullanıyor",
+  "features": "Akıllı doz hesaplama, ilaç takibi, görev yönetimi, yapay zekâ ile ön tanı, kan tahlili analizi ve daha fazlası — E-VetDose hepsine sahip.",
+  "demo": "Ücretsiz Test Et!"
+},
+"homeSecondComponent":{
+  "demo": "Ücretsiz Test Et!"
+},
+"homeThirdComponent": {
+    "stat1Title": "1 milyon+",
+    "stat1Text": "kayıtlı evcil hayvan",
+    "stat2Title": "$13M+",
+    "stat2Text": "işlem gerçekleştirildi",
+    "stat3Title": "15.000+",
+    "stat3Text": "veteriner profesyoneli dünya çapında",
+    "sectionTitle": "Hepsi bir arada çözüm",
+    "sectionHeading": "Kliniğinizin ihtiyaç duyduğu her şey",
+    "sectionSubtext": "E-VetDose, hasta bakımı ve klinik yönetimini kolaylaştırmak için ihtiyacınız olan tüm araçları bir araya getirir.",
+    "box1Title": "Zaman Tasarrufu",
+    "box1Text": "E-VetDose kullanan klinikler her gün ortalama 3 saat tasarruf sağladı",
+    "box2Title": "Artan Gelir",
+    "box2Text": "E-VetDose'un sağlık planlarını kullanan klinikler gelirlerini %20'den fazla artırdı",
+    "box3Title": "Cevapsız Çağrı Azalması",
+    "box3Text": "E-VetDose araçları sayesinde veteriner ekipleri cevapsız çağrılarda %85'e varan azalma yaşadı",
+    "demo": "Ücretsiz Test Et!"
+  },
+  "homeBlog": {
+    "title": "Blog Yazılarımız",
+    "subtitle": "Sizin gibi veteriner kliniklerinin E-VetDose ile operasyonlarını nasıl dönüştürdüğünü görün",
+    "demo": "Ücretsiz Test Et!"
+  },
+  "homeReady": {
+    "title": "Veteriner kliniğinizi dönüştürmeye hazır mısınız?",
+    "subtitle": "E-VetDose kullanan en başarılı veteriner ekiplerine katılın. Bugün size özel bir görüşme planlayın.",
+    "demo": "Ücretsiz Dene"
+  },
+
+  "aboutUs": {
+    "title": "E-VetDose Özellikleriyle Tanışın",
+    "intro": "Veteriner hekimlerin günlük iş yükünü azaltmak, hasta takibini kolaylaştırmak ve klinik verimliliği artırmak için geliştirilen E-VetDose, modern teknolojinin gücünü sahaya taşıyor. İşte uygulamamızın sunduğu başlıca özellikler:",
+    "aiTitle": "🧠 Yapay Zekâ Destekli Klinik Yardımcı",
+    "aiDesc": "E-VetDose’un AI destekli modülü; girilen anamnez bilgilerini analiz ederek hastalık ön tanısı oluşturabilir, önerilen tedavi yollarını sunabilir ve hekimlere karar destek sağlar. Bu sistem, adeta klinikte ikinci bir yardımcı hekim gibi çalışır.",
+    "anamnezTitle": "📋 Akıllı Anamnez Sistemi",
+    "anamnezDesc": "Hasta sahipleri tarafından doldurulan interaktif anamnez formu ile hastaya ait ön bilgiler hızlı ve yapılandırılmış şekilde toplanır. Sistem, semptomları analiz ederek hekime kliniğe gelmeden önce bilgi sunar; bu da hızlı tanı ve tedavi sürecine katkı sağlar.",
+    "drugSearchTitle": "🔍 İlaç Arama ve Bulma Özelliği",
+    "drugSearchDesc": "İlaç ismine, etken maddeye ya da kullanım amacına göre saniyeler içinde doğru ilaca ulaşabilirsiniz. Hekimler, tedavi sürecinde ihtiyaç duydukları bilgiye zaman kaybetmeden erişir.",
+    "libraryTitle": "📚 Genişletilmiş İlaç Kütüphanesi",
+    "libraryDesc": "Binlerce veteriner ilacı içeren sürekli güncellenen bir veri tabanı sunuyoruz. Her ilaca ait doz bilgileri, endikasyonlar, kontrendikasyonlar ve uyarılar kolayca erişilebilir durumda. Güvenli ve bilinçli reçetelendirme artık daha kolay.",
+    "dosageTitle": "💊 İlaç Rehberi & Doz Hesaplama",
+    "dosageDesc": "Klinik pratikte zaman kazandıran bu özellik sayesinde, hayvanın kilosuna göre otomatik doz hesaplaması yapılabilir. Farklı türler için güvenli doz aralıkları ve formülasyon seçenekleri kullanıcıya sunulur. Dozaj hatalarını minimuma indirir.",
+    "reminderTitle": "📅 Randevu ve Hatırlatma Sistemi",
+    "reminderDesc": "Randevular artık daha düzenli! Müşterilere otomatik SMS ve e-posta hatırlatmaları göndererek randevu unutmalarının önüne geçiyoruz. Ajandanız sizin yerinize çalışıyor.",
+    "conclusion": "Bu özellikler sayesinde, E-VetDose sadece bir yazılım değil; veteriner hekimler için dijital bir yardımcıdır. İster küçük bir klinik ister büyük bir hayvan hastanesi olun, E-VetDose her ölçek için esnek ve güçlü çözümler sunar."
+  },
+  "BlogPage": {
+    "header": "Blog Yazılarımız",
+    "recentPosts": "Son Yazılar",
+    "bannerAlt": "Veterinerlik Blog Afişi"
+  },
+  "ContactPage": {
+    "contactUsTitle": "Bize Ulaşın",
+    "contactUsSubtitle": "Sorularınız mı var? Bizimle iletişime geçin!",
+    "contactUsDescription": "Sorularınızı yanıtlamaktan memnuniyet duyarız. Size en iyi hizmeti sunmak için buradayız!",
+    "contactInfoAddress": "Beşiktaş / İstanbul",
+    "contactInfoPhone": "+90 (506) 156 63 64",
+    "contactInfoEmail": "info@e-vetdose.com",
+    "formName": "Adınız",
+    "formEmail": "E-posta Adresi",
+    "formPhone": "Telefon",
+    "formSubject": "Konu",
+    "formMessage": "Size nasıl yardımcı olabiliriz? Lütfen bizimle iletişime geçmekten çekinmeyin!",
+    "formSubmit": "Bizimle İletişime Geçin"
+  },
+  "pricing": {
+    "subTitle": "Veteriner hekimler için tasarlandı, klinik ihtiyaçlarınıza göre geliştirildi",
+    "title": "Tüm klinik ihtiyaçlarınız için akıllı çözümler, uygun fiyatlarla",
+    "desc": "E-VetDose ile hasta yönetimi, ilaç takibi ve klinik verimliliğini tek panelden yönetin. Ücretsiz denemenizi hemen başlatın.",
+    
+    "monthly": "Aylık",
+    "annually": "Yıllık",
+    "discount": "%20 indirim",
+
+    "basicTitle": "Basic",
+    "basicDesc": "Daha küçük hedef kitleye sahip klinikler ve bireysel veteriner hekimler için uygundur.",
+    "basicPrice": "$35.99",
+    "basicBtn": "Ücretsiz Test Et!",
+   "basicFeatures": {
+  "1": "Alarm Kurma",
+  "2": "İlaç Kütüphanesi",
+  "3": "Anamnezden İlaca",
+  "4": "Doz Hesaplayıcı",
+  "5": "Birim Çevirici"
+},
+
+    "proTitle": "Professional",
+    "proDesc": "Geniş hasta portföyüne sahip dinamik klinikler için yapay zekâ destekli gelişmiş çözümler.",
+    "proPrice": "$59.99",
+    "proBtn": "Hesap Oluştur!",
+    "proFeatures": {
+  "1": "+ Basic Paket",
+  "2": "AI destekli yardımcı tedavi uzmanı",
+  "3": "Röntgen tanımlayıcı",
+  "4": "Hemogram Testi yorumlayıcı",
+  "5": "Biyokimya Testi yorumlayıcı"
+},
+
+    "enterpriseTitle": "Enterprise",
+    "enterpriseDesc": "Çok kullanıcılı, yüksek hacimli klinik takımları için özel tasarlanmış paket.",
+    "enterprisePrice": "$119.99",
+    "enterpriseBtn": "Hesap Oluştur!",
+    "enterpriseFeatures": {
+  "1": "+ Basic Paket",
+  "2": "+ Professional Paket",
+  "3": "Hasta Takip Raporu Hazırlama aracı",
+  "4": "İleriye dönük tedavi hatırlatma aracı",
+  "5": "Birden fazla kullanıcıya uygun"
+}
+  },
+  "register":{
+    "title": "Kayıt Ol",
+    "namePlaceholder": "Ad Soyad",
+    "emailPlaceholder": "E-posta",
+    "passwordPlaceholder": "Şifre",
+    "confirmPasswordPlaceholder": "Şifreyi Tekrar Girin",
+    "termsText": "Kullanıcı Sözleşmesini Kabul Ediyorum",
+    "submit": "Kayıt Ol",
+    "submitting": "Kayıt Olunuyor...",
+    "loginRedirect": "Zaten bir hesabın var mı?",
+    "loginLink": "Giriş Yap",
+    "termsTitle": "Kullanıcı Sözleşmesi",
+    "termsAccept": "Kabul Ediyorum"
+  },
+  "login":{
+    "title": "Giriş Yap",
+    "emailPlaceholder": "E-posta",
+    "passwordPlaceholder": "Şifre",
+    "submit": "Giriş Yap",
+    "submitting": "Giriş Yapılıyor...",
+    "forgotPassword": "Şifremi Unuttum",
+    "registerPrompt": "Hesabın yok mu?",
+    "registerLink": "Kayıt ol",
+    "errorEmpty": "Lütfen e-posta ve şifre girin.",
+    "errorLogin": "Giriş Bilgileri Hatalı!"
+  },
+  "forgot-password":{
+    "title": "Şifremi Unuttum",
+    "description": "Şifrenizi sıfırlamak için e-posta adresinizi girin. Size bir bağlantı göndereceğiz.",
+    "emailPlaceholder": "E-posta",
+    "submit": "Şifreyi Sıfırla",
+    "submitting": "Gönderiliyor...",
+    "backToLogin": "Giriş sayfasına dön",
+    "alertEmpty": "Lütfen e-posta adresinizi girin.",
+    "alertSuccess": "Şifre sıfırlama e-postası gönderildi.",
+    "alertError": "Hata"
   }
 }

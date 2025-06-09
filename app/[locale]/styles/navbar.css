@@ -1,4 +1,6 @@
 .navbarMain{
+    position: absolute;
+    z-index: 9;
     display: flex;
     justify-content: space-between;
     padding: 50px 100px;
@@ -6,17 +8,19 @@
     height: 100px;
     align-items: center;
     text-align: center;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(173, 173, 192, 0.2) 0px 7px 29px 0px;
     transition: all 0.3s;
 }
 
 .navbarMain:hover{
-    box-shadow: rgba(100, 100, 111, 0.4) 0px 10px 35px 0px;
+    box-shadow: rgba(173, 173, 192, 0.5) 0px 10px 35px 0px;
 }
 .navbarLogoDiv a img{
     width: 75px;
-    height: 75px;
+    height: 74px;
+    box-shadow: rgba(173, 173, 192, 0.5) 0px 7px 29px 5px;
     object-fit: contain;
+    border-radius: 18px;
 }
 
 .navbarLink{
@@ -29,4 +33,5 @@ gap: 30px;
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
+color: white;
 }

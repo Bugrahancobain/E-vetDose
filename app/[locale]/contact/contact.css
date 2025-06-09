@@ -1,0 +1,209 @@
+.contactBanner {
+    width: 100%;
+    height: 70vh !important;
+    padding-top: 100px;
+  }
+
+  .contactBanner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .contactInfoUnderDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contactPage h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: end;
+}
+
+.contactForm input,
+.contactForm textarea
+ {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.contactForm input::placeholder,
+.contactForm textarea::placeholder
+ {
+    color: white;
+}
+
+.contactForm select{
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.contactFormDiv{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px 0;
+    width: 100%;
+    height: max-content;
+    align-items: start;
+}
+
+.contactFormText, .contactMeetText{
+    width: 50%;
+    
+}
+
+.contactFormText h2{
+    transition: all 0.3s ease;
+}
+
+.contactFormText h2:hover{
+    color: orange;
+}
+
+.contactMarkt{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 20px;
+}
+.contactForm{
+    width: 50%;
+}
+.contactFormText h2, .contactMeetText h2{
+    font-size: 50px;
+}
+
+.formGroup{
+    position: relative;
+}
+
+.formGroup input, .formGroup textarea{
+    width: 500px;
+    border: none;
+    border-bottom: 1px solid black;
+    padding-left: 50px;
+    text-align: start;
+}
+
+.contactForm input, .contactForm textarea{
+    border: none;
+    border-bottom: 1px solid black;
+    padding-left: 50px;
+    text-align: start;
+}
+
+.formGroup .formIcon{
+    position: absolute;
+    top: 13px;
+    left: 10px;
+}
+
+.submitButton{
+    width: 200px;
+    border-radius: 35px;
+    background-color: rgb(172, 30, 30);
+    transition: all 0.3s ease;
+}
+
+.submitButton:hover{
+    background-color: red;
+}
+
+@media (max-width: 1024px) {
+    .contactFormDiv, .meetPage{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+    .formClassTest{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    .formGroup, .contactForm{
+    width: 90% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    .formGroup input, .formGroup textarea{
+        width: 100% !important;
+    }
+
+    .contactFormText{
+        width: 90%;
+    }
+
+    .contactMarkt{
+        justify-content: center;
+    }
+
+    .contactFormText h2{
+    width: 100%;
+    text-align: center;
+    }
+
+    .contactForm h2{
+        font-size: 30px;
+    }
+    .contactPageHeaderDiv{
+        padding: 20px 0;
+    }
+}
+
+@media (max-width: 870px) {
+    .contactInfoDiv{
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+    }
+}
+
+@media (max-width: 450px) {
+    
+    .contactFormDiv{
+        width: 100% !important;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .formClassTest{
+        width: 90% !important;
+    }
+}

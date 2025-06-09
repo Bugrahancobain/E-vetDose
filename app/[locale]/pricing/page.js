@@ -1,9 +1,85 @@
-import React from 'react'
+'use client';
 
-function page() {
+import React, { useState } from 'react';
+import './pricing.css';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+
+export default function PricingPage({ locale }) {
+    const t = useTranslations('pricing');
+    const [isYearly, setIsYearly] = useState(true);
+
+    // Fiyat hesaplama
+    const formatPrice = (monthlyPrice) => {
+        const price = isYearly
+            ? (monthlyPrice) // %20 indirimli yıllık aylık fiyat
+            : (monthlyPrice * 1.2);
+        return `$${price.toFixed(2)}`;
+    };
+
     return (
-        <div>pricing</div>
-    )
-}
+        <div className="pricingMain">
+            <span className="pricingSubTitle">{t("subTitle")}</span>
+            <h1 className="pricingTitle">{t("title")}</h1>
+            <p className="pricingDesc">{t("desc")}</p>
 
-export default page
+            {/* Yıllık / Aylık Switch */}
+            <div className="switchWrap">
+                <span className={!isYearly ? 'active' : ''}>{t("monthly")}</span>
+                <label className="switch">
+                    <input
+                        type="checkbox"
+                        checked={isYearly}
+                        onChange={() => setIsYearly(!isYearly)}
+                    />
+                    <span className="slider round"></span>
+                </label>
+                <span className={isYearly ? 'active' : ''}>
+                    {t("annually")} <span className="discount">{t("discount")}</span>
+                </span>
+            </div>
+
+            {/* Paketler */}
+            <div className="pricingCards">
+                {/* Basic */}
+                <div className="pricingCard">
+                    <h3>{t("basicTitle")}</h3>
+                    <p>{t("basicDesc")}</p>
+                    <h2>{formatPrice(29.99)} <span>/{t("monthly")}</span></h2>
+                    <Link href={`/${locale}/login`} className="btn">{t("basicBtn")}</Link>
+                    <ul>
+                        {[1, 2, 3, 4, 5].map((i) => (
+                            <li key={i}>{t(`basicFeatures.${i}`)}</li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/* Professional */}
+                <div className="pricingCard active">
+                    <h3>{t("proTitle")}</h3>
+                    <p>{t("proDesc")}</p>
+                    <h2>{formatPrice(49.99)} <span>/{t("monthly")}</span></h2>
+                    <Link href={`/${locale}/login`} className="btn btnPrimary">{t("proBtn")}</Link>
+                    <ul>
+                        {[1, 2, 3, 4, 5].map((i) => (
+                            <li key={i}>{t(`proFeatures.${i}`)}</li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/* Enterprise */}
+                <div className="pricingCard">
+                    <h3>{t("enterpriseTitle")}</h3>
+                    <p>{t("enterpriseDesc")}</p>
+                    <h2>{formatPrice(99.99)} <span>/{t("monthly")}</span></h2>
+                    <Link href={`/${locale}/login`} className="btn">{t("enterpriseBtn")}</Link>
+                    <ul>
+                        {[1, 2, 3, 4, 5].map((i) => (
+                            <li key={i}>{t(`enterpriseFeatures.${i}`)}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
+}

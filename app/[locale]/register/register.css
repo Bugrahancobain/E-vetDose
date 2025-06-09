@@ -1,0 +1,157 @@
+.registerContainer {
+    min-height: 100vh;
+    background-color: #f5f8ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+    padding-bottom: 50px;
+  }
+  
+  .registerForm {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .registerTitle {
+    font-size: 26px;
+    font-weight: bold;
+    color: #254650;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: white;
+  }
+  
+  .registerInput {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #b5d7d3;
+    border-radius: 8px;
+    padding: 0 15px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    color: black;
+  }
+  
+  .registerButton {
+    width: 100%;
+    height: 48px;
+    background-color: #254650;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .registerButton:hover {
+    background-color: #1d3842;
+  }
+  
+  .loginLinkBelow {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 15px;
+    color: #254650;
+  }
+  
+  .loginLinkBelow span {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  /* Checkbox */
+  .checkboxContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .checkboxLabel {
+    font-size: 14px;
+    color: #254650;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Modal */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .modalContent {
+    background-color: white;
+    padding: 20px;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modalTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #254650;
+    margin-bottom: 15px;
+  }
+  
+  .modalText {
+    font-size: 14px;
+    color: #333;
+    white-space: pre-wrap;
+    line-height: 1.6;
+  }
+  
+  .modalButton {
+    background-color: #254650;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .modalButton:hover {
+    background-color: #1d3842;
+  }
+
+  .registerCheckbox{
+    background-color: white;
+  }
+
+  .termsText{
+    background-color: white;
+    color: #254650;
+    padding-left: 10px;
+  }
+
+  .registerLoginRedirect, .registerLoginRedirect a span{
+    background-color: white;
+    color: #254650;
+    padding-top: 10px;
+  }
+  .registerLoginRedirect a span{
+    text-decoration: underline;
+  }

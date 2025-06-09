@@ -1,0 +1,258 @@
+/* Blog Ana Sayfa Yapısı */
+.blogPageMain {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.blogPageHeaderDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+    padding: 150px 0 50px 0;
+    font-size: 30px;
+}
+
+/* Main Blog Content */
+.blogMain {
+    flex: 3;
+    display: flex;
+    flex-direction: column; /* Blog gönderilerini alt alta diz */
+    gap: 30px;
+    width: 66%;
+    align-items: center;
+}
+
+.blogCard {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row; /* Resmi ve içeriği yan yana tutar */
+    width: 75%;
+    gap: 30px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.blogCard img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover; /* Resmi kırpmadan sığdırır */
+    flex-shrink: 0; /* Resmin küçülmesini engeller */
+    border-radius: 10px;
+}
+
+.blogCardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* İçerik arasında boşluk sağlar */
+    gap: 10px;
+    padding: 15px;
+    flex-grow: 1; /* İçeriğin genişlemesini sağlar */
+    overflow: hidden; /* İçeriğin taşmasını engeller */
+    background-color: white;
+}
+
+.blogCardContent h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    word-wrap: break-word; /* Uzun başlıkları kırar */
+    background-color: white;
+}
+
+.blogCardContent p {
+    margin: 0;
+    color: #555;
+    word-wrap: break-word; /* Uzun açıklamaları kırar */
+    background-color: white;
+}
+
+.blogCardContent span {
+    font-size: 0.9rem;
+    color: #999;
+    background-color: white;
+
+}
+.blogCardContent div {
+ background-color: white;
+}
+
+/* Sidebar */
+.blogSidebar {
+    flex: 1;
+    position: sticky;
+    top: 20px; /* Sayfanın üstünden 20px boşluk bırak */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    border-radius: 12px;
+    background-color: white;
+    width: 33%;
+    justify-content: center;
+    color: black;
+    margin-right: 50px;
+}
+
+.blogSidebarSection {
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    color: black;
+    width: 100%;
+}
+
+.blogSidebarSection h3 {
+    margin: 0 0 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+}
+
+.blogSidebarCard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    margin-bottom: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.blogSidebarCard img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover; /* Resmi kırpmadan sığdırır */
+    border-radius: 5px;
+    background-color: white;
+    flex-shrink: 0; /* Resmin küçülmesini engeller */
+}
+
+.blogSidebarCard div {
+    display: flex;
+    flex-direction: column; /* Metinleri alt alta yerleştirir */
+    background-color: white;
+    word-wrap: break-word; /* Uzun metinleri kırar */
+}
+
+.blogSidebarCard h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    background-color: white;
+
+}
+
+.blogSidebarCard span {
+    font-size: 0.9rem;
+    color: #999;
+    background-color: white;
+
+}
+
+.blogSidebarBanner img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover; /* Resmin boyutunu korur ve kırpmayı önler */
+    background-color: white;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.page-button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    margin: 30px auto;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.page-button:hover {
+    background-color: #f0f0f0;
+}
+
+.page-button.active {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+}
+
+@media (max-width: 1250px) {
+    .blogPageMain{
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .blogMain{
+        width: 100%;
+    }
+    .blogMain div{
+        width: 90%!important;
+    }
+    .blogCard{
+        width: 100% !important;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .blogSidebar{
+        position:relative;
+        flex-direction: column;
+        bottom: 0px;
+        top: auto;
+        gap: 20px;
+        width: 90%!important;
+        min-width: 90%;
+        max-width: 90%;
+        justify-content: center;
+        margin-right: 0px;
+        align-items: center;
+    }
+    .blogSidebarSection{
+        height: max-content;
+    }
+    .blogSidebarBanner{
+        width: 100%;
+        text-align: center;
+    }
+    .blogSidebarBanner img{
+    width: 80%;
+    height: 200px;
+    object-fit: cover;
+    }
+
+    .blogPageHeaderDiv{
+        padding: 20px 0;
+    }
+}
+@media (max-width: 610px){
+    .blogCard{
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .blogCard img{
+        width: 100%;
+    }
+}

@@ -3,7 +3,179 @@
     "home": "Home",
     "about": "About Us",
     "contact": "Contact",
+    "pricing": "Pricing",
     "blog": "Blog",
     "login": "Login"
+  },
+  "footer": {
+    "followUs": "Follow Us!",
+    "resources": "Resources",
+    "home": "Home",
+    "about": "About Us",
+    "blog": "Blog",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "pricing": "Pricing",
+    "termsOfService": "Terms of Service",
+    "allRights": "All rights reserved."
+  },
+  "homeFirstComponent": {
+  "apple": "Apple Store",
+  "google": "Google Play Store",
+  "trusted": "Trusted by 1000+ veterinary professionals worldwide",
+  "title": "The most successful veterinary clinics use E-VetDose",
+  "features": "Smart dosage calculator, medication tracking, task management, AI-assisted diagnosis, blood test analysis, and more — E-VetDose has it all.",
+  "demo": "Schedule a demo!"
+},
+"homeSecondComponent":{
+"demo": "Schedule a demo!"
+},
+"homeThirdComponent": {
+    "stat1Title": "1 million+",
+    "stat1Text": "pets registered",
+    "stat2Title": "$13M+",
+    "stat2Text": "in transactions processed",
+    "stat3Title": "15,000+",
+    "stat3Text": "veterinary professionals worldwide",
+    "sectionTitle": "All-in-one solution",
+    "sectionHeading": "Everything your practice needs",
+    "sectionSubtext": "E-VetDose combines all the tools you need to streamline patient treatment and practice management.",
+    "box1Title": "Time Saved",
+    "box1Text": "On average, clinics utilising E-VetDose saved around 3 hours every, single day",
+    "box2Title": "Increased Revenue",
+    "box2Text": "Clinics using E-VetDose's wellness plans have increased revenue by +20%",
+    "box3Title": "Reduce Missed Calls",
+    "box3Text": "Features within the E-VetDose tool kit empower veterinary teams with as much as an 85% decrease in missed call rates",
+    "demo": "Try for free"
+  },
+  "homeBlog": {
+    "title": "Our Blog Post",
+    "subtitle": "See how veterinary practices like yours have transformed their operations with E-VetDose",
+    "demo": "Try for Free"
+  },
+  "homeReady": {
+    "title": "Ready to transform your veterinary practice?",
+    "subtitle": "Join the most successful veterinary teams using E-VetDose. Schedule a personalized call today.",
+    "demo": "Try for Free"
+  },
+
+  "aboutUs": {
+    "title": "Discover the Features of E-VetDose",
+    "intro": "Developed to reduce the daily workload of veterinarians, simplify patient tracking, and enhance clinic efficiency, E-VetDose brings the power of modern technology to your practice. Here are the key features our platform offers:",
+    "aiTitle": "🧠 AI-Powered Clinical Assistant",
+    "aiDesc": "E-VetDose’s AI module analyzes anamnesis data to provide preliminary diagnoses, suggest treatment paths, and support clinical decision-making. It works like a second medical brain within your clinic.",
+    "anamnezTitle": "📋 Smart Anamnesis System",
+    "anamnezDesc": "With an interactive anamnesis form filled out by pet owners, structured patient information is collected quickly. The system analyzes symptoms and provides pre-visit insights to the veterinarian, accelerating diagnosis and treatment.",
+    "drugSearchTitle": "🔍 Drug Search and Discovery",
+    "drugSearchDesc": "Find the right medication within seconds by searching via active ingredient, drug name, or treatment protocol. Eliminate wasted time in the clinic and reduce errors.",
+    "libraryTitle": "📚 Expanded Drug Library",
+    "libraryDesc": "Our continuously updated and verified drug database provides easy access to thousands of veterinary medications, including dosage info, indications, contraindications, and warnings—all in one place.",
+    "dosageTitle": "💊 Drug Guide & Dosage Calculator",
+    "dosageDesc": "This feature saves time in clinical practice by automatically calculating doses based on the animal’s weight. It displays safe dose ranges and formulation options for different species, minimizing dosage errors.",
+    "reminderTitle": "📅 Appointment & Reminder System",
+    "reminderDesc": "Appointments are now more organized! We send automatic SMS and email reminders to clients to prevent missed visits. Let your agenda work for you.",
+    "conclusion": "With these features, E-VetDose is not just a software but a digital assistant for veterinarians. Whether you're a small clinic or a large animal hospital, E-VetDose offers flexible and powerful solutions for every scale."
+  },
+  "BlogPage": {
+    "header": "Our Blog",
+    "recentPosts": "Recent Posts",
+    "bannerAlt": "Veterinary Blog Banner"
+  },
+  "ContactPage": {
+    "contactUsTitle": "Contact Us",
+    "contactUsSubtitle": "Have questions? Get in touch with us!",
+    "contactUsDescription": "We are happy to answer your questions. We are here to offer you the best service!",
+    "contactInfoAddress": "Beşiktaş / Istanbul",
+    "contactInfoPhone": "+90 (506) 156 63 64",
+    "contactInfoEmail": "info@e-vetdose.com",
+    "formName": "Your Name",
+    "formEmail": "Email Address",
+    "formPhone": "Phone",
+    "formSubject": "Subject",
+    "formMessage": "How can we help you? Please don't hesitate to contact us!",
+    "formSubmit": "Get in Touch with Us"
+  },
+  "pricing": {
+    "subTitle": "Designed for veterinarians, developed to fit your clinic's needs",
+    "title": "Smart solutions for all your clinic needs, at fair prices",
+    "desc": "Manage patient records, medication tracking, and clinic efficiency—all from a single panel with E-VetDose. Start your free trial today.",
+    
+    "monthly": "Monthly",
+    "annually": "Annually",
+    "discount": "20% off",
+
+    "basicTitle": "Basic",
+    "basicDesc": "Ideal for solo practitioners and smaller clinics with a limited client base.",
+    "basicPrice": "$35.99",
+    "basicBtn": "Try It Free!",
+    "basicFeatures": {
+  "1": "Set alarms",
+  "2": "Drug library",
+  "3": "From anamnesis to prescription",
+  "4": "Dosage calculator",
+  "5": "Unit converter"
+},
+
+    "proTitle": "Professional",
+    "proDesc": "AI-powered tools for modern, dynamic clinics with a growing patient volume.",
+    "proPrice": "$59.99",
+    "proBtn": "Create Account",
+    "proFeatures": {
+  "1": "+ Basic Package",
+  "2": "AI-powered treatment assistant",
+  "3": "X-ray recognizer",
+  "4": "Hemogram analyzer",
+  "5": "Biochemistry analyzer"
+},
+
+    "enterpriseTitle": "Enterprise",
+    "enterpriseDesc": "Tailored for large veterinary teams and high-volume practices.",
+    "enterprisePrice": "$119.99",
+    "enterpriseBtn": "Create Account",
+    "enterpriseFeatures": {
+  "1": "+ Basic Package",
+  "2": "+ Professional Package",
+  "3": "Patient tracking report generator",
+  "4": "Future treatment reminder tool",
+  "5": "Supports multiple users"
+}
+  },
+  "register":{
+    "title": "Register",
+    "namePlaceholder": "Full Name",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm Password",
+    "termsText": "I Accept the Terms and Conditions",
+    "submit": "Register",
+    "submitting": "Registering...",
+    "loginRedirect": "Already have an account?",
+    "loginLink": "Login",
+    "termsTitle": "Terms and Conditions",
+    "termsAccept": "I Accept"
+  },
+  "login":{
+    "title": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "submit": "Login",
+    "submitting": "Logging in...",
+    "forgotPassword": "Forgot Password",
+    "registerPrompt": "Don't have an account?",
+    "registerLink": "Register",
+    "errorEmpty": "Please enter email and password.",
+    "errorLogin": "Invalid login credentials!"
+  },
+  "forgot-password":{
+    "title": "Forgot Password",
+    "description": "Enter your email address to reset your password. We’ll send you a reset link.",
+    "emailPlaceholder": "Email",
+    "submit": "Reset Password",
+    "submitting": "Sending...",
+    "backToLogin": "Back to login",
+    "alertEmpty": "Please enter your email address.",
+    "alertSuccess": "Password reset email has been sent.",
+    "alertError": "Error"
   }
+
 }

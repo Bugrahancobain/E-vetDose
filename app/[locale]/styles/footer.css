@@ -1,0 +1,59 @@
+.footerMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-top: 50px;
+}
+.footerLogo{
+    width: 100px;
+    height: 100px;
+}
+.footerInfo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 50px 0px;
+    border-bottom: 1px solid white;
+}
+
+.footerContactDiv, .footerResourcesDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.footerResourcesDiv div{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footerContactDiv div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 24px;
+}
+
+.footerBottom{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 50px ;
+}
+
+.FooterPolicyDiv{
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.FooterPolicyDiv a{
+    text-decoration: none;
+}

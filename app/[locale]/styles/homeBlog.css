@@ -1,0 +1,41 @@
+.homeBlogMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    height: max-content;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.homeBlogTitleWraper{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.homeBlogTitleWraper h2{
+    font-size: 3rem;
+}
+
+.homeBlogTitleWraper span{
+    font-size: 1.25rem;
+}
+
+.homeBlogBtn{
+    background-color: orange;
+    border-radius: 16px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: rgba(173, 173, 192, 0.5) 0px 7px 29px 0px;
+    transition: all 0.3s;
+}
+
+
+.homeBlogBtn:hover{
+    box-shadow: rgba(173, 173, 192, 1) 0px 10px 35px 0px;
+
+}
