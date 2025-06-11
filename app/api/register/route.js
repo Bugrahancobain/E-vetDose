@@ -1,5 +1,5 @@
 import { connectToDB } from '../../../mongodb';
-import User from '../../../models/User'; // Kullanıcı modeli
+import User from '../../../models/User.js'; // Kullanıcı modeli
 
 export async function POST(req) {
     try {
