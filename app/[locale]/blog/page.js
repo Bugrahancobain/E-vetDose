@@ -2,7 +2,7 @@
 import clientPromise from "../../utils/mongo";
 import BlogClient from "./BlogClient";
 
-export async function fetchBlogsFromMongo() {
+async function fetchBlogsFromMongo() {
     try {
         const client = await clientPromise;
         const db = client.db("evetdose");
