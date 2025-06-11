@@ -4,16 +4,15 @@ import React, { useState } from 'react';
 import './pricing.css';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 
-export default function PricingPage({ locale }) {
+export default function PricingPage() {
     const t = useTranslations('pricing');
+    const { locale } = useParams();
     const [isYearly, setIsYearly] = useState(true);
 
-    // Fiyat hesaplama
     const formatPrice = (monthlyPrice) => {
-        const price = isYearly
-            ? (monthlyPrice) // %20 indirimli yıllık aylık fiyat
-            : (monthlyPrice * 1.2);
+        const price = isYearly ? monthlyPrice : monthlyPrice * 1.2;
         return `$${price.toFixed(2)}`;
     };
 
@@ -23,7 +22,6 @@ export default function PricingPage({ locale }) {
             <h1 className="pricingTitle">{t("title")}</h1>
             <p className="pricingDesc">{t("desc")}</p>
 
-            {/* Yıllık / Aylık Switch */}
             <div className="switchWrap">
                 <span className={!isYearly ? 'active' : ''}>{t("monthly")}</span>
                 <label className="switch">
@@ -39,7 +37,6 @@ export default function PricingPage({ locale }) {
                 </span>
             </div>
 
-            {/* Paketler */}
             <div className="pricingCards">
                 {/* Basic */}
                 <div className="pricingCard">
