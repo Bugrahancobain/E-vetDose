@@ -5,11 +5,22 @@ import { getMessages } from "next-intl/server";
 import Footer from "./components/Footer";
 import Head from "next/head";
 
+export const metadata = {
+  title: 'E-VetDose',
+  description: 'Veterinerler için akıllı asistan',
+  manifest: '/manifest.json',
+  themeColor: '#254650',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/icons/icon-192x192.png',
+  },
+};
 
 export default async function RootLayout({ children, params }) {
   // params.locale'i await ile çöz
   const locale = params?.locale || "en"; // Varsayılan dil atanır
   const messages = await getMessages({ locale });
+
 
   return (
     <html lang={locale}>
