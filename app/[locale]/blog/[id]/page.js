@@ -3,18 +3,17 @@ import clientPromise from "../../../utils/mongo.ts";
 import BlogDetailClient from "./BlogDetailClient";
 import { ObjectId } from "mongodb";
 
-export async function fetchBlogsAndCurrent(id) {
+// ❌ export KALDIRILDI
+async function fetchBlogsAndCurrent(id) {
     try {
         const client = await clientPromise;
         const db = client.db("evetdose");
         const blogsCollection = db.collection("blogs");
 
-        // Belirli blogu al
         const currentBlog = await blogsCollection.findOne({
             _id: new ObjectId(id),
         });
 
-        // Tüm blogları al
         const blogs = await blogsCollection
             .find({})
             .sort({ dateAdded: -1 })
