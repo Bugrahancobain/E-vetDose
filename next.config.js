@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa')({
     dest: 'public',
     register: true,
@@ -9,8 +8,10 @@ const createNextIntlPlugin = require('next-intl/plugin');
 
 const withNextIntl = createNextIntlPlugin();
 
-const baseConfig = {
-
+const nextConfig = {
+    experimental: {
+        serverActions: true,
+    },
 };
 
-module.exports = withPWA(withNextIntl(baseConfig));
+module.exports = withPWA(withNextIntl(nextConfig));
