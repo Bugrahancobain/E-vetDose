@@ -3,13 +3,11 @@
 import React, { useEffect } from "react";
 import { FaHeart, FaTwitter, FaFacebook, FaEnvelope, FaLink, FaChevronDown, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
-import { useLikes } from "../../../../useLikes";
 import { useTranslations } from "next-intl";
 import "./blogDetail.css";
 
 function BlogDetailClient({ blog, blogs, locale }) {
     const t = useTranslations("BlogDetailPage");
-    const { likesCount, isLiked, handleToggleLike } = useLikes("blogs", blog.id);
     const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
     // Mevcut blogun indeksini bul
