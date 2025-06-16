@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import { useRouter, useParams } from 'next/navigation';
+import Sidebar from "./components/sidebar"
 
 export default function DashboardLayout({ children }) {
     const [loading, setLoading] = useState(true);
@@ -28,9 +29,20 @@ export default function DashboardLayout({ children }) {
     }
 
     return (
-        <div className="dashboardWrapper">
-            {/* Buraya ortak bileşenler (Sidebar, Navbar) eklenebilir */}
-            {children}
-        </div>
+        <>
+            <Sidebar locale={locale} />
+
+            <div
+                className="dashboardWrapper"
+                style={{
+                    backgroundColor: "#f5f8ef",
+                    marginLeft: '100px',
+                    padding: '20px',
+                    minHeight: '100vh',
+                }}
+            >
+                {children}
+            </div>
+        </>
     );
 }

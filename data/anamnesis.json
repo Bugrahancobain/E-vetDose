@@ -1,0 +1,280 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Metabolik Problemler",
+      "options": [
+        { "id": 101, "label": "Diyabet" },
+        { "id": 102, "label": "Hipoglisemi (Düşük Kan Şekeri)" },
+        { "id": 103, "label": "Hiperglisemi (Yüksek Kan Şekeri)" },
+        { "id": 104, "label": "Metabolik Asidoz" },
+        { "id": 105, "label": "Metabolik Alkaloz" },
+        { "id": 106, "label": "Tiroid Problemleri" },
+        { "id": 107, "label": "Obezite" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Solunum Problemleri",
+      "options": [
+        { "id": 201, "label": "Nefes Darlığı" },
+        { "id": 202, "label": "Hırıltılı Solunum" },
+        { "id": 203, "label": "Kuru Öksürük" },
+        { "id": 204, "label": "Islak Öksürük" },
+        { "id": 205, "label": "Astım" },
+        { "id": 206, "label": "Bronşit" },
+        { "id": 207, "label": "Pnömoni (Zatürre)" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Cilt Problemleri",
+      "options": [
+        { "id": 301, "label": "Kaşıntı" },
+        { "id": 302, "label": "Kızarıklık" },
+        { "id": 303, "label": "Cilt Kuruluğu" },
+        { "id": 304, "label": "Egzama" },
+        { "id": 305, "label": "Cilt Döküntüsü" },
+        { "id": 306, "label": "Alopecia (Tüy Dökülmesi)" },
+        { "id": 307, "label": "Cilt Enfeksiyonları" },
+        { "id": 308, "label": "Herpes" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Üreme Sistemi Problemleri",
+      "options": [
+        { "id": 401, "label": "Gebelik Sonlandırma" },
+        { "id": 402, "label": "Doğum Zorluğu" },
+        { "id": 403, "label": "Yumurtalık Kistleri" },
+        { "id": 404, "label": "Erkeklerde Kısırlık" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Parazit Problemleri",
+      "options": [
+        { "id": 501, "label": "Bağırsak Parazitleri" },
+        { "id": 502, "label": "Dış Parazitler (Pire, Keneler)" },
+        { "id": 503, "label": "Paraziter Enfeksiyonlar" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Protein Eksikliği",
+      "options": [
+        { "id": 601, "label": "Protein Eksikliği" },
+        { "id": 602, "label": "Kas Erimesi" },
+        { "id": 603, "label": "Aşırı Zayıflık" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Kemik Problemleri",
+      "options": [
+        { "id": 701, "label": "Kemik Yoğunluğu Kaybı" },
+        { "id": 702, "label": "Eklem Ağrısı" },
+        { "id": 703, "label": "Kemik Kırıkları" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Kan Problemleri",
+      "options": [
+        { "id": 801, "label": "Anemi" },
+        { "id": 802, "label": "Pıhtılaşma Bozuklukları" },
+        { "id": 803, "label": "Trombositopeni (Düşük Trombosit)" },
+        { "id": 804, "label": "Lökositoz (Yüksek Beyaz Kan Hücresi)" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Ağrı Problemleri",
+      "options": [
+        { "id": 901, "label": "Baş Ağrısı" },
+        { "id": 902, "label": "Eklem Ağrısı" },
+        { "id": 903, "label": "Kas Ağrısı" },
+        { "id": 904, "label": "Ameliyat Sonrası Ağrı" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Enfeksiyon Problemleri",
+      "options": [
+        { "id": 1001, "label": "Viral Enfeksiyonlar" },
+        { "id": 1002, "label": "Bakteriyel Enfeksiyonlar" },
+        { "id": 1003, "label": "Mantar Enfeksiyonları" }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Göz Problemleri",
+      "options": [
+        { "id": 1101, "label": "Göz Kuruluğu" },
+        { "id": 1102, "label": "Göz Enfeksiyonları" },
+        { "id": 1103, "label": "Glokom" }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "İdrar Yolu Problemleri",
+      "options": [
+        { "id": 1201, "label": "İdrar Yolu Enfeksiyonu" },
+        { "id": 1202, "label": "Böbrek Taşı" },
+        { "id": 1203, "label": "Böbrek Yetmezliği" }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Nörolojik Problemler",
+      "options": [
+        { "id": 1301, "label": "Epilepsi" },
+        { "id": 1302, "label": "Sinirsel Bozukluklar" },
+        { "id": 1303, "label": "Felç" }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Hormon Düzensizlikleri",
+      "options": [
+        { "id": 1401, "label": "Tiroid Sorunları" },
+        { "id": 1402, "label": "Kortizol Fazlalığı" }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Toksik Maddelere Maruz Kalma",
+      "options": [
+        { "id": 1501, "label": "Zehirlenme" },
+        { "id": 1502, "label": "Kimyasal Zehirlenme" }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Kardiyovasküler Problemler",
+      "options": [
+        { "id": 1601, "label": "Hipertansiyon" },
+        { "id": 1602, "label": "Kalp Yetmezliği" },
+        { "id": 1603, "label": "Aritmi" }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Davranışsal Problemler",
+      "options": [
+        { "id": 1701, "label": "Anksiyete" },
+        { "id": 1702, "label": "Agresyon" }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Onkolojik Problemler",
+      "options": [
+        { "id": 1801, "label": "Kanser" },
+        { "id": 1802, "label": "Tümör" }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Sindirim Sistemi Problemleri",
+      "options": [
+        { "id": 1901, "label": "Kusma" },
+        { "id": 1902, "label": "İshal" },
+        { "id": 1903, "label": "Kabızlık" },
+        { "id": 1904, "label": "İştah Kaybı" },
+        { "id": 1905, "label": "Karın Ağrısı" },
+        { "id": 1906, "label": "Gaz Problemleri" },
+        { "id": 1907, "label": "Mide Bulantısı" },
+        { "id": 1908, "label": "Reflü" }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Alerjik Reaksiyonlar",
+      "options": [
+        { "id": 2001, "label": "Gıda Alerjisi" },
+        { "id": 2002, "label": "İlaç Alerjisi" },
+        { "id": 2003, "label": "Polen Alerjisi" },
+        { "id": 2004, "label": "Cilt Alerjisi" },
+        { "id": 2005, "label": "Anafilaksi" }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Bağışıklık Sistemi Problemleri",
+      "options": [
+        { "id": 2101, "label": "Otoimmün Hastalıklar" },
+        { "id": 2102, "label": "Sık Enfeksiyon Geçirme" },
+        { "id": 2103, "label": "Bağışıklık Yetmezliği" }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Kulak Problemleri",
+      "options": [
+        { "id": 2201, "label": "Kulak Enfeksiyonu" },
+        { "id": 2202, "label": "Kulak Ağrısı" },
+        { "id": 2203, "label": "İşitme Kaybı" },
+        { "id": 2204, "label": "Kulak Çınlaması" }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Ağız ve Diş Problemleri",
+      "options": [
+        { "id": 2301, "label": "Diş Ağrısı" },
+        { "id": 2302, "label": "Diş Eti Kanaması" },
+        { "id": 2303, "label": "Ağız Yaraları" },
+        { "id": 2304, "label": "Ağız Kokusu" }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Psikolojik Problemler",
+      "options": [
+        { "id": 2401, "label": "Depresyon" },
+        { "id": 2402, "label": "Uyku Bozuklukları" },
+        { "id": 2403, "label": "Stres" },
+        { "id": 2404, "label": "Panik Atak" }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Kas ve Sinir Sistemi Problemleri",
+      "options": [
+        { "id": 2501, "label": "Kas Güçsüzlüğü" },
+        { "id": 2502, "label": "Titreme" },
+        { "id": 2503, "label": "Kas Spazmları" },
+        { "id": 2504, "label": "Koordinasyon Bozukluğu" }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Genel Semptomlar",
+      "options": [
+        { "id": 2601, "label": "Ateş" },
+        { "id": 2602, "label": "Halsizlik" },
+        { "id": 2603, "label": "Kilo Kaybı" },
+        { "id": 2604, "label": "Terleme" }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Yaşlılıkla İlgili Problemler",
+      "options": [
+        { "id": 2701, "label": "Demans" },
+        { "id": 2702, "label": "Osteoporoz" },
+        { "id": 2703, "label": "Eklem Kireçlenmesi" }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Çocukluk Çağı Problemleri",
+      "options": [
+        { "id": 2801, "label": "Büyüme Geriliği" },
+        { "id": 2802, "label": "Dikkat Eksikliği" },
+        { "id": 2803, "label": "Hiperaktivite" }
+      ]
+    }
+  ]
+}

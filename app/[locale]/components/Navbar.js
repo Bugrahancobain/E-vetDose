@@ -24,7 +24,7 @@ function Navbar({ locale }) {
             </div>
             <div className='navbarLogin'>
                 <LanguageSwitcher />
-                <Link locale={locale} href={`/${locale}/login`}>{t('login')}</Link>
+                <Link locale={locale} href={`/${locale}/dashboard`}>{t('login')}</Link>
             </div>
         </div>
     );

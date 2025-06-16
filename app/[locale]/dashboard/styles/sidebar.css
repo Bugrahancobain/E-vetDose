@@ -1,0 +1,32 @@
+.dashboardSideBarMain{
+    position: fixed; /* Ekrana sabitler */
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    width: 100px;
+    height: 100vh;
+    padding: 15px;
+    gap: 50px;
+    z-index: 999; /* diğer içeriklerin altında kalmasın */
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05); /* isteğe bağlı gölge efekti */
+}
+
+.dashboardSideBarImgDiv{
+    width: 100%;
+}
+
+.dashboardSideBarImg{
+    width: 50px;
+    height: auto;
+}
+
+.dashboardSideBarLinkDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+}

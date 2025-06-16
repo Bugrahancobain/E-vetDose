@@ -2,7 +2,7 @@ import NavbarWrapper from "./components/NavbarWrapper";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import Footer from "./components/Footer";
+import FooterWrapper from "./components/FooterWrapper";
 import Head from "next/head";
 
 export const metadata = {
@@ -34,7 +34,7 @@ export default async function RootLayout({ children, params }) {
 
           <NavbarWrapper locale={locale} />
           {children}
-          <Footer locale={locale} />
+          <FooterWrapper locale={locale} />
 
         </NextIntlClientProvider>
       </body>
