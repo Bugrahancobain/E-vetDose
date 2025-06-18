@@ -2,7 +2,7 @@ import React from 'react'
 
 function page() {
     return (
-        <div>İlacımı bul</div>
+        <div>page</div>
     )
 }
 

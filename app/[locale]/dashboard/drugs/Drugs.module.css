@@ -1,0 +1,94 @@
+.container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 16px;
+}
+
+.title {
+    text-align: center;
+    font-size: 28px;
+    color: #254650;
+    margin-bottom: 20px;
+    background-color: white;
+
+}
+
+.search {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid orange;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    background-color: white;
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    background: white;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.3s;
+}
+
+.card h3, .card p{
+    background-color: white;
+color: black;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    background-color: white;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .pagination span{
+    background-color: white;
+    color: #ff6600;
+  }
+  
+  .pageButton {
+    background-color: white;
+    border: 1px solid #ff6600;
+    color: #ff6600;
+    padding: 8px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .pageButton:hover {
+    background-color: #ff6600;
+    color: white;
+  }
+  
+  .active {
+    background-color: #ff6600;
+    color: white;
+  }

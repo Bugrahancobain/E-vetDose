@@ -1,0 +1,73 @@
+.detailContainer {
+    padding: 2rem;
+    background-color: white;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #254650;
+    border-radius: 16px;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    color: #254650;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    background-color: white;
+  }
+  
+  .section {
+    margin-bottom: 2rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .section div{
+    background-color: white;
+
+  }
+  
+  .section h2 {
+    font-size: 1.3rem;
+    background-color: #254650;
+    color: #fff;
+    padding: 0.6rem 1rem;
+    border-radius: 8px 8px 0 0;
+    margin: -1.2rem -1.2rem 1rem -1.2rem;
+  }
+  
+  .section h4 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    background-color: white;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+  
+  .section p {
+    margin: 0.4rem 0;
+    font-size: 0.96rem;
+    color: #333;
+    background-color: white;
+  }
+  
+  .list {
+    list-style-type: disc;
+    background-color: white;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .listItem {
+    margin-bottom: 0.4rem;
+    background-color: white;
+    color: #444;
+  }
+
+  .listItem b{
+    background-color: white;
+color: black;
+  }
