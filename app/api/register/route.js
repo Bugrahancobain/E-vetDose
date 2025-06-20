@@ -1,4 +1,4 @@
-import { connectToDB } from '../../../mongodb';
+import connectToDB from '../../../mongodb';
 import User from '../../../models/User.js'; // Kullanıcı modeli
 
 export async function POST(req) {
@@ -9,7 +9,7 @@ export async function POST(req) {
         await connectToDB();
 
         // Kullanıcı daha önce eklenmiş mi kontrolü
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({ uid }); // her işlem uid üzerinden yapılmalı
         if (existingUser) {
             return new Response(JSON.stringify({ message: 'Kullanıcı zaten kayıtlı.' }), { status: 400 });
         }

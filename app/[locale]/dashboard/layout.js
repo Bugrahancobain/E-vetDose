@@ -5,6 +5,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import { useRouter, useParams } from 'next/navigation';
 import Sidebar from "./components/sidebar"
+import ServiceWorkerRegistrar from "./components/ServiceWorkerRegistrar";
 
 export default function DashboardLayout({ children }) {
     const [loading, setLoading] = useState(true);
@@ -41,8 +42,10 @@ export default function DashboardLayout({ children }) {
                     minHeight: '100vh',
                 }}
             >
+                <ServiceWorkerRegistrar />
                 {children}
             </div>
         </>
     );
 }
+

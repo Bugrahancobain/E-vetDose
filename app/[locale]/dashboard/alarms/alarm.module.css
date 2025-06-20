@@ -1,0 +1,219 @@
+.container {
+  background-color: #f5f8ef;
+  padding: 20px;
+  min-height: 100vh;
+  color: black;
+}
+
+.backButton {
+  margin-bottom: 10px;
+  background-color: transparent;
+  border: none;
+  color: #254650;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #254650;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #b5d7d3;
+  border-radius: 10px;
+  padding: 0 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  color: black;
+}
+
+.timeButton {
+  background-color: #b5d7d3;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: center;
+  color: #254650;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+.toggleBtn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: #e3f1ee;
+  font-weight: bold;
+  color: #254650;
+  border: none;
+  cursor: pointer;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #254650;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.listTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #254650;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.alarmItem {
+  background-color: #ffffff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  color: #254650;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alarmItem span, .alarmItem button{
+  color: black;
+}
+
+.alarmText {
+  font-size: 16px;
+  color: #254650;
+}
+
+.deleteBtn {
+  background-color: #ff6b6b;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: none;
+  
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.cancelBtn {
+  background-color: #b5d7d3;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.confirmBtn {
+  background-color: #254650;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.dailyToggle, .addButton{
+  color: #254650;
+
+}
+
+.switchContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.switchContainer span{
+  color: black;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 28px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: #4caf50;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(22px);
+}

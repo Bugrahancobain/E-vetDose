@@ -10,7 +10,17 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
     experimental: {
-        serverActions: true,
+        serverActions: {
+            bodySizeLimit: '10mb', // 🔥 10 MB sınır koyduk (gerekirse artırılabilir)
+        },
+    },
+    async rewrites() {
+        return [
+            {
+                source: "/firebase-messaging-sw.js",
+                destination: "/firebase-messaging-sw.js",
+            },
+        ];
     },
 };
 
