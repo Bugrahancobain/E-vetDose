@@ -1,12 +1,14 @@
-import { OpenAI } from 'openai';
+import { NextResponse } from "next/server";
+import { OpenAI } from "openai";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+});
 
-export default async function handler(req, res) {
-    if (req.method !== 'POST') return res.status(405).end();
-
+export async function POST(req) {
     try {
-        const { messages } = req.body;
+        const body = await req.json(); // ✅ req.body yerine bu
+        const { messages } = body;
 
         const completion = await openai.chat.completions.create({
             model: 'gpt-4',
@@ -16,9 +18,12 @@ export default async function handler(req, res) {
         });
 
         const response = completion.choices[0]?.message?.content;
-        return res.status(200).json({ response });
+        return NextResponse.json({ response }); // ✅ res.status yerine
     } catch (err) {
         console.error("OpenAI Error:", err);
-        return res.status(500).json({ error: "Mesaj gönderilemedi." });
+        return NextResponse.json(
+            { error: "Mesaj gönderilemedi." },
+            { status: 500 }
+        );
     }
 }
