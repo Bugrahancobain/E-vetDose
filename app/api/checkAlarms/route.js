@@ -9,22 +9,25 @@ export async function GET() {
     try {
         await connectToDB();
         console.log("✅ DB bağlantısı kuruldu");
-        // app/api/checkAlarms/route.js
 
+        // Şu anki saat (Türkiye saatiyle)
         const now = new Date();
-        const hhmm = now.toLocaleTimeString("tr-TR", {
-            timeZone: "Europe/Istanbul",
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-        });
+        const istNow = new Date(
+            now.toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+        );
+        const nowMinutes = istNow.getHours() * 60 + istNow.getMinutes();
 
-        console.log("⏳ Alarm zamanı kontrol ediliyor:", hhmm);
-        const users = await User.find({ "alarms.time": hhmm });
+        console.log("⏳ Alarm zamanı kontrol ediliyor (dakika):", nowMinutes);
+
+        const users = await User.find();
         console.log("👥 Kullanıcı sayısı:", users.length);
 
         for (const user of users) {
-            const dueAlarms = user.alarms.filter((a) => a.time === hhmm);
+            const dueAlarms = user.alarms.filter((alarm) => {
+                const [hour, minute] = alarm.time.split(":").map(Number);
+                const alarmMinutes = hour * 60 + minute;
+                return Math.abs(alarmMinutes - nowMinutes) <= 5;
+            });
 
             let hasChanges = false;
 
@@ -46,14 +49,17 @@ export async function GET() {
                     hasChanges = true;
                     console.log("🗑 Tek seferlik alarm silindi:", alarm._id);
                 } else {
-                    console.log("🔁 Günlük alarm çalındı, tekrar edecek:", alarm._id);
+                    console.log("🔁 Günlük alarm tekrar edecek:", alarm._id);
                 }
             }
 
-            if (hasChanges) await user.save();
+            if (hasChanges) {
+                await user.save();
+                console.log("💾 Kullanıcı kaydedildi:", user.uid);
+            }
         }
 
-        return NextResponse.json({ success: true, time: hhmm });
+        return NextResponse.json({ success: true, checkedAt: nowMinutes });
     } catch (error) {
         console.error("⛔ Alarm kontrolü hatası:", error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

@@ -3,6 +3,8 @@ import User from "../models/User.js";
 import { messaging } from "../firebaseAdmin.js";
 import connectDB from "../mongodb.js";
 import mongoose from "mongoose";
+import { deleteAlarm } from "../api";
+
 
 cron.schedule("* * * * *", async () => {
     await connectDB();
