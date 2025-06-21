@@ -5,12 +5,16 @@ import User from "../../../models/User";    // kendi yolunu ayarla
 import { messaging } from "../../../firebaseAdmin"; // kendi yolunu ayarla
 
 export async function GET() {
+    console.log("🚀 /api/checkAlarms çağrıldı");
     try {
         await connectToDB();
+        console.log("✅ DB bağlantısı kuruldu");
         const now = new Date();
         const hhmm = now.toTimeString().slice(0, 5); // "14:30" gibi
 
+        console.log("⏳ Alarm zamanı kontrol ediliyor:", hhmm);
         const users = await User.find({ "alarms.time": hhmm });
+        console.log("👥 Kullanıcı sayısı:", users.length);
 
         for (const user of users) {
             const dueAlarms = user.alarms.filter((a) => a.time === hhmm);
