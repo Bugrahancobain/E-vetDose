@@ -1,9 +1,8 @@
 // app/api/checkAlarms/route.js
 import { NextResponse } from "next/server";
-import connectToDB from "@/mongodb"; // kendi yolunu ayarla
-import User from "@/models/User";    // kendi yolunu ayarla
-import { messaging } from "@/firebaseAdmin"; // kendi yolunu ayarla
-import mongoose from "mongoose";
+import connectToDB from "../../../mongodb"; // kendi yolunu ayarla
+import User from "../../../models/User";    // kendi yolunu ayarla
+import { messaging } from "../../../firebaseAdmin"; // kendi yolunu ayarla
 
 export async function GET() {
     try {
