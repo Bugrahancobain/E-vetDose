@@ -9,8 +9,15 @@ export async function GET() {
     try {
         await connectToDB();
         console.log("✅ DB bağlantısı kuruldu");
+        // app/api/checkAlarms/route.js
+
         const now = new Date();
-        const hhmm = now.toTimeString().slice(0, 5); // "14:30" gibi
+        const hhmm = now.toLocaleTimeString("tr-TR", {
+            timeZone: "Europe/Istanbul",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+        });
 
         console.log("⏳ Alarm zamanı kontrol ediliyor:", hhmm);
         const users = await User.find({ "alarms.time": hhmm });
