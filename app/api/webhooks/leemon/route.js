@@ -2,6 +2,12 @@ import { NextResponse } from "next/server";
 import connectToDB from "../../../../mongodb";
 import User from "../../../../models/User";
 
+function tryParseDate(dateStr) {
+    if (!dateStr) return null;
+    const date = new Date(dateStr);
+    return isNaN(date.getTime()) ? null : date;
+}
+
 export async function POST(req) {
     try {
         const payload = await req.json();
@@ -39,11 +45,15 @@ export async function POST(req) {
         }
 
         // 📅 Tarihleri parse et
-        const startDate = new Date(data.attributes.starts_at);
-        const endDate = new Date(data.attributes.renews_at);
+        const attr = data.attributes;
+
+        const startDate = tryParseDate(attr.created_at);
+        const renewDate = tryParseDate(attr.renews_at);
+        const endDate = tryParseDate(attr.ends_at);
+        const trialEnd = tryParseDate(attr.trial_ends_at);
 
         if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-            console.error("❌ Geçersiz tarih formatı:", data.attributes.starts_at, data.attributes.renews_at);
+            console.error("❌ Geçersiz tarih formatı:", data.attributes.created_at, data.attributes.renews_at);
             return NextResponse.json({ error: "Geçersiz tarih verisi" }, { status: 400 });
         }
 
@@ -53,11 +63,11 @@ export async function POST(req) {
             plan: planInfo.plan,
             billingCycle: planInfo.billing,
             subscriptionStart: startDate,
-            subscriptionEnd: endDate,
+            subscriptionEnd: endDate || renewDate,
             subscriptionId: data.id,
             customerId: data.attributes.customer_id,
             trialStart: user.subscription?.trialStart ?? null,
-            trialEnd: user.subscription?.trialEnd ?? null,
+            trialEnd: trialEnd ?? user.subscription?.trialEnd ?? null,
         };
 
         await user.save();
