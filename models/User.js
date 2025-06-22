@@ -33,6 +33,18 @@ const AlarmSchema = new mongoose.Schema({
     alarmTime: Date,
 });
 
+const SubscriptionSchema = new mongoose.Schema({
+    status: { type: String, enum: ["trial", "active", "expired"], default: "trial" },
+    plan: { type: String, enum: ["basic", "pro", "enterprise", null], default: null },
+    billingCycle: { type: String, enum: ["monthly", "yearly", null], default: null },
+    trialStart: { type: Date, default: Date.now },
+    trialEnd: { type: Date },
+    subscriptionStart: { type: Date, default: null },
+    subscriptionEnd: { type: Date, default: null },
+    subscriptionId: { type: String, default: null },
+    customerId: { type: String, default: null }
+});
+
 
 const UserSchema = new mongoose.Schema({
     uid: String,
@@ -57,6 +69,10 @@ const UserSchema = new mongoose.Schema({
             uploadedAt: Date,
         }
     ],
+    subscription: {
+        type: SubscriptionSchema,
+        default: () => ({})
+    }
 });
 
 export default mongoose.models.User || mongoose.model('User', UserSchema);

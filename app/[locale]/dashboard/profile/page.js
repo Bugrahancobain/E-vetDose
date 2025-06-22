@@ -8,6 +8,7 @@ import { auth } from "../../../../firebase";
 import { useRouter } from "next/navigation";
 import styles from "./profile.module.css";
 
+
 export default function ProfileSettings() {
     const user = auth.currentUser;
     const router = useRouter();
@@ -17,6 +18,33 @@ export default function ProfileSettings() {
     const [profileImage, setProfileImage] = useState("");
     const [loading, setLoading] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
+    const [billingCycle, setBillingCycle] = useState("monthly");
+    const [selectedPlan, setSelectedPlan] = useState("556653"); // default: basic monthly
+
+    const plans = {
+        monthly: [
+            { id: "556653", name: "Basic", price: "$35.99/ay" },
+            { id: "556664", name: "Pro", price: "$59.99/ay" },
+            { id: "556665", name: "Enterprise", price: "$119.99/ay" },
+        ],
+        yearly: [
+            { id: "556667", name: "Basic", price: "$359.99/yıl ($29.99/ay)" },
+            { id: "556668", name: "Pro", price: "$599.99/yıl ($49.99/ay)" },
+            { id: "556669", name: "Enterprise", price: "$1199.99/yıl ($99.99/ay)" },
+        ]
+    };
+
+    const getLemonLinkById = (id) => {
+        const links = {
+            "556653": "https://e-vetdose.lemonsqueezy.com/buy/9b3b3d8b-0756-44ed-8ba1-03e251158960",
+            "556667": "https://e-vetdose.lemonsqueezy.com/buy/c7fd6280-9f21-4574-b14e-c9c5ab73db09",
+            "556664": "https://e-vetdose.lemonsqueezy.com/buy/9b43a1d4-dbdc-4cab-9ece-ff91f7cc3291",
+            "556668": "https://e-vetdose.lemonsqueezy.com/buy/b09f2c4c-9e04-4343-b9aa-96adcbc0cbd2",
+            "556665": "https://e-vetdose.lemonsqueezy.com/buy/939d9a1c-d992-4805-91ba-50cac299f99a",
+            "556669": "https://e-vetdose.lemonsqueezy.com/buy/001ccc32-5910-4a00-bd4e-1d74bdec2e3c",
+        };
+        return links[id];
+    };
 
     const uid = user?.uid;
 
@@ -120,8 +148,40 @@ export default function ProfileSettings() {
                 <div className={styles.modalOverlay}>
                     <div className={styles.modalContent}>
                         <h3>Abonelik Paketleri</h3>
-                        <p>Henüz entegre edilmedi.</p>
-                        <button onClick={() => setModalOpen(false)} className={styles.button}>
+
+                        <div className={styles.toggleContainer}>
+                            <span>Aylık</span>
+                            <label className={styles.switch}>
+                                <input
+                                    type="checkbox"
+                                    checked={billingCycle === "yearly"}
+                                    onChange={() => setBillingCycle(billingCycle === "monthly" ? "yearly" : "monthly")}
+                                />
+                                <span className={styles.slider}></span>
+                            </label>
+                            <span>Yıllık</span>
+                        </div>
+
+                        <select
+                            value={selectedPlan}
+                            onChange={(e) => setSelectedPlan(e.target.value)}
+                            className={styles.select}
+                        >
+                            {plans[billingCycle].map((plan) => (
+                                <option key={plan.id} value={plan.id}>
+                                    {plan.name} - {plan.price}
+                                </option>
+                            ))}
+                        </select>
+
+                        <button
+                            className={styles.button}
+                            onClick={() => window.open(getLemonLinkById(selectedPlan), "_blank")}
+                        >
+                            Satın Al
+                        </button>
+
+                        <button onClick={() => setModalOpen(false)} className={styles.secondaryButton}>
                             Kapat
                         </button>
                     </div>

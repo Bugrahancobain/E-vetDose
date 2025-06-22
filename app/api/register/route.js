@@ -18,7 +18,19 @@ export async function POST(req) {
             email,
             fullName,
             profileImage: profileImage || "", // 👈 base64 varsa kaydet
-            createdAt: new Date()
+            createdAt: new Date(),
+            subscription: {
+                status: "trial",
+                plan: null,
+                billingCycle: null,
+                trialStart: new Date(),
+                trialEnd: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 gün sonrası
+                subscriptionStart: null,
+                subscriptionEnd: null,
+                subscriptionId: null,
+                customerId: null
+            }
+
         });
 
         await newUser.save();
@@ -33,7 +45,6 @@ export async function POST(req) {
 export async function GET(req) {
     try {
         await connectToDB();
-
         const { searchParams } = new URL(req.url);
         const uid = searchParams.get('uid');
 
@@ -47,11 +58,8 @@ export async function GET(req) {
             return new Response(JSON.stringify({ error: 'Kullanıcı bulunamadı' }), { status: 404 });
         }
 
-        const { fullName, email, profileImage } = user; // şimdilik temel bilgiler
-
-        return new Response(JSON.stringify({ fullName, email, profileImage }), {
-            status: 200,
-        });
+        // Tüm kullanıcı nesnesini döndürelim
+        return new Response(JSON.stringify(user), { status: 200 });
     } catch (error) {
         return new Response(JSON.stringify({ error: 'Sunucu hatası' }), { status: 500 });
     }
@@ -60,7 +68,7 @@ export async function GET(req) {
 export async function PATCH(req) {
     try {
         const body = await req.json();
-        const { uid, fullName, profileImage } = body;
+        const { uid, fullName, profileImage, subscription } = body;
 
         await connectToDB();
 

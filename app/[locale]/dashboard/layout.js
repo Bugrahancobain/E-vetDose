@@ -6,6 +6,7 @@ import { auth } from '../../../firebase';
 import { useRouter, useParams } from 'next/navigation';
 import Sidebar from "./components/sidebar"
 import ServiceWorkerRegistrar from "./components/ServiceWorkerRegistrar";
+import { UserProvider } from "../../../context/UserContext";
 
 export default function DashboardLayout({ children }) {
     const [loading, setLoading] = useState(true);
@@ -43,7 +44,9 @@ export default function DashboardLayout({ children }) {
                 }}
             >
                 <ServiceWorkerRegistrar />
-                {children}
+                <UserProvider>
+                    {children}
+                </UserProvider>
             </div>
         </>
     );
