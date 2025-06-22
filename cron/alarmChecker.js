@@ -31,6 +31,7 @@ cron.schedule("* * * * *", async () => {
                 notification: {
                     title: "🔔 Alarm Zamanı!",
                     body: `${alarm.patientName}: ${alarm.description}`,
+                    icon: "https://e-vet-dose.vercel.app/icon-192x192.png",
                 },
             });
 

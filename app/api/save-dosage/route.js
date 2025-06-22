@@ -55,3 +55,26 @@ export async function POST(req) {
         return new Response(JSON.stringify({ error: 'Sunucu hatası' }), { status: 500 });
     }
 }
+
+export async function GET(req) {
+    try {
+        const { searchParams } = new URL(req.url);
+        const uid = searchParams.get("uid");
+
+        if (!uid) {
+            return new Response(JSON.stringify({ error: "UID gerekli" }), { status: 400 });
+        }
+
+        await connectToDB();
+
+        const user = await User.findOne({ uid });
+
+        if (!user) {
+            return new Response(JSON.stringify([]), { status: 200 });
+        }
+
+        return new Response(JSON.stringify(user.dosages || []), { status: 200 });
+    } catch (error) {
+        return new Response(JSON.stringify({ error: "Sunucu hatası" }), { status: 500 });
+    }
+}

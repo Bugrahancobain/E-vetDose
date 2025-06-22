@@ -42,6 +42,10 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: () => new Date(),
     },
+    profileImage: {
+        type: String,
+        default: "", // opsiyonel
+    }, // 👈 base64 formatında fotoğraf için eklendi
     fcmToken: String,
     alarms: [AlarmSchema],
     messages: [MessageSchema],

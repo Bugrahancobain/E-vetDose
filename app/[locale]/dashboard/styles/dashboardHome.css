@@ -1,0 +1,185 @@
+.dashboardHomeContainer {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f5f8ef;
+  font-family: sans-serif;
+}
+
+/* PROFİL ALANI */
+.dashboardHomeProfile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.profileImgWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImg {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+.welcomeText {
+  font-size: 18px;
+  font-weight: bold;
+  color: #254650;
+}
+
+.welcomeText strong{
+    color: #254650;
+}
+
+/* GÜNLÜK BİLGİ ALANI */
+.dailyTipBox {
+  background-color: #b5d7d3;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.dailyTipBox h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #254650;
+  margin-bottom: 0.5rem;
+}
+
+.dailyTipBox p {
+  font-size: 14px;
+  color: #254650;
+}
+
+/* ALARM LİSTESİ */
+.alarmBox {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.alarmBox h3 {
+  margin-bottom: 10px;
+  color: #254650;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.alarmBox p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.alarmList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.alarmList li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #333;
+}
+
+.alarmList strong {
+  color: #254650;
+}
+
+.alarmItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    gap: 1rem;
+    color: #254650;
+}
+
+.alarmItem div {
+    max-width: 48%;
+    color: #254650;
+    overflow-wrap: break-word;
+}
+
+.seeMoreBtn {
+  margin-top: 10px;
+  background-color: #254650;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* DOZAJ GEÇMİŞİ */
+.doseHistoryBox {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.doseHistoryBox h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #254650;
+  margin-bottom: 1rem;
+}
+
+.doseHistoryBox p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.doseHistoryList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.doseHistoryList li {
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.doseHistoryList small {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.dosageHistoryWrapperLi{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+      color: #254650;
+}
+
+.dosageHistoryWrapperLi div, .dosageHistoryWrapperLi strong{
+    color: #254650;
+}

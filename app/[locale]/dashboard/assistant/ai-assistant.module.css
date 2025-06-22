@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 95vh;
   background: #f5f8ef;
 }
 
