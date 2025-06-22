@@ -32,7 +32,7 @@ export async function POST(req) {
         }
 
         await connectToDB();
-        const user = await User.findOne({ email: data.attributes.customer_email });
+        const user = await User.findOne({ email: data.attributes.user_email });
 
         if (!user) {
             return NextResponse.json({ error: "Kullanıcı bulunamadı." }, { status: 404 });
