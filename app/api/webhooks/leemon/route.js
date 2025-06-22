@@ -18,18 +18,22 @@ export async function POST(req) {
             return NextResponse.json({ error: "Eksik veri" }, { status: 400 });
         }
 
-        const productId = data.attributes.product_id;
-        const variantId = data.attributes.variant_id;
+        const attr = data.attributes;
+
+        // 🎯 Sadece desteklenen event'lerde işlem yap
+        if (!["subscription_created", "subscription_updated"].includes(event)) {
+            return NextResponse.json({ message: "Event tipi işlenmiyor" }, { status: 200 });
+        }
+
+        const productId = attr.product_id;
 
         const mapping = {
-            "556653": { plan: "basic", billing: "monthly" },       // BasicPlanMontly
-            "556667": { plan: "basic", billing: "yearly" },        // BasicPlanYearly
-
-            "556665": { plan: "enterprise", billing: "monthly" },  // EnterpricePlanMontly
-            "556669": { plan: "enterprise", billing: "yearly" },   // EnterpricePlanYearly
-
-            "556664": { plan: "pro", billing: "monthly" },         // ProfessionalPlanMontly
-            "556668": { plan: "pro", billing: "yearly" }           // ProfessionalPlanYearly
+            "556653": { plan: "basic", billing: "monthly" },
+            "556667": { plan: "basic", billing: "yearly" },
+            "556665": { plan: "enterprise", billing: "monthly" },
+            "556669": { plan: "enterprise", billing: "yearly" },
+            "556664": { plan: "pro", billing: "monthly" },
+            "556668": { plan: "pro", billing: "yearly" }
         };
 
         const planInfo = mapping[productId];
@@ -38,43 +42,37 @@ export async function POST(req) {
         }
 
         await connectToDB();
-        const user = await User.findOne({ email: data.attributes.user_email });
+        const user = await User.findOne({ email: attr.user_email });
 
         if (!user) {
             return NextResponse.json({ error: "Kullanıcı bulunamadı." }, { status: 404 });
         }
 
-        // 📅 Tarihleri parse et
-        const attr = data.attributes;
-
         const startDate = tryParseDate(attr.created_at);
         const renewDate = tryParseDate(attr.renews_at);
-        const endDate = tryParseDate(attr.ends_at);
-        const trialEnd = tryParseDate(attr.trial_ends_at);
+        const endDate = tryParseDate(attr.ends_at); // null gelebilir
 
-        if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-            console.error("❌ Geçersiz tarih formatı:", data.attributes.created_at, data.attributes.renews_at);
-            return NextResponse.json({ error: "Geçersiz tarih verisi" }, { status: 400 });
+        if (!startDate) {
+            return NextResponse.json({ error: "Başlangıç tarihi geçersiz" }, { status: 400 });
         }
 
-        // ✅ Güncelle
         user.subscription = {
-            status: "active",
+            status: attr.status || "active",
             plan: planInfo.plan,
             billingCycle: planInfo.billing,
             subscriptionStart: startDate,
-            subscriptionEnd: endDate || renewDate,
+            subscriptionEnd: endDate ?? renewDate ?? null,
             subscriptionId: data.id,
-            customerId: data.attributes.customer_id,
-            trialStart: user.subscription?.trialStart ?? null,
-            trialEnd: trialEnd ?? user.subscription?.trialEnd ?? null,
+            customerId: attr.customer_id,
+            trialStart: null,
+            trialEnd: tryParseDate(attr.trial_ends_at) ?? null,
         };
 
         await user.save();
 
         return NextResponse.json({ message: "Abonelik başarıyla güncellendi" }, { status: 200 });
     } catch (error) {
-        console.error("Webhook hatası:", error);
+        console.error("Webhook hatası:", error.stack || error);
         return NextResponse.json({ error: "Sunucu hatası" }, { status: 500 });
     }
 }
