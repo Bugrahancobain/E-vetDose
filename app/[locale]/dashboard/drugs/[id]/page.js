@@ -1,3 +1,4 @@
+"use client";
 import medications from '../../../../../data/medicationsDetailsData.json';
 import styles from './DrugsDetails.module.css';
 import { useRouter } from "next/navigation"; // en üstte olmalı
