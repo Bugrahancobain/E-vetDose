@@ -1,13 +1,14 @@
 'use client';
+
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import React from 'react';
 import "../styles/sidebar.css";
 import { signOut } from "firebase/auth";
-import { auth } from "../../../../firebase"; // 🔹 Burada firebase.js dosyasından auth çekiyoruz
+import { auth } from "../../../../firebase";
 import { useRouter } from 'next/navigation';
 
-function Sidebar({ locale }) {
+function Sidebar({ locale, isOpen, onLinkClick }) {
     const t = useTranslations('navbar');
     const router = useRouter();
 
@@ -20,24 +21,30 @@ function Sidebar({ locale }) {
         }
     };
 
+    const handleLinkClick = () => {
+        if (onLinkClick) {
+            onLinkClick(); // sidebar'ı kapat
+        }
+    };
+
     return (
-        <div className='dashboardSideBarMain'>
+        <div className={`dashboardSideBarMain ${isOpen ? 'open' : ''}`}>
             <div>
-                <Link href={`/${locale}/dashboard`} className='dashboardSideBarImgDiv'>
+                <Link href={`/${locale}/dashboard`} className='dashboardSideBarImgDiv' onClick={handleLinkClick}>
                     <img className='dashboardSideBarImg' src="/Logo.png" alt="Logo.png" />
                 </Link>
                 <div className='dashboardSideBarLinkDiv'>
-                    <Link href={`/${locale}/dashboard`} >Anasayfa</Link>
-                    <Link href={`/${locale}/dashboard/dosage`} >Dozaj Hesapla</Link>
-                    <Link href={`/${locale}/dashboard/drugs`} >İlaç Kütüphanesi</Link>
-                    <Link href={`/${locale}/dashboard/find-medicine`} >İlacını Bul</Link>
-                    <Link href={`/${locale}/dashboard/cc`} >Birim Çevir</Link>
-                    <Link href={`/${locale}/dashboard/alarms`} >Alarm Kur</Link>
-                    <Link href={`/${locale}/dashboard/assistant`} >AI Asistan</Link>
+                    <Link href={`/${locale}/dashboard`} onClick={handleLinkClick}>Anasayfa</Link>
+                    <Link href={`/${locale}/dashboard/dosage`} onClick={handleLinkClick}>Dozaj Hesapla</Link>
+                    <Link href={`/${locale}/dashboard/drugs`} onClick={handleLinkClick}>İlaç Kütüphanesi</Link>
+                    <Link href={`/${locale}/dashboard/find-medicine`} onClick={handleLinkClick}>İlacını Bul</Link>
+                    <Link href={`/${locale}/dashboard/cc`} onClick={handleLinkClick}>Birim Çevir</Link>
+                    <Link href={`/${locale}/dashboard/alarms`} onClick={handleLinkClick}>Alarm Kur</Link>
+                    <Link href={`/${locale}/dashboard/assistant`} onClick={handleLinkClick}>AI Asistan</Link>
                 </div>
             </div>
             <div>
-                <Link href={`/${locale}/dashboard/profile`} >Settings</Link>
+                <Link href={`/${locale}/dashboard/profile`} onClick={handleLinkClick}>Settings</Link>
                 <button onClick={handleLogout} className='dashboardSideBarQuit'>
                     Çıkış
                 </button>

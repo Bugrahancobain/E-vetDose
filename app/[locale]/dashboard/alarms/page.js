@@ -6,6 +6,7 @@ import { saveAlarm, fetchAlarms, deleteAlarm } from "../../../../api";
 import { auth } from "../../../../firebase";
 import { useRouter } from "next/navigation"; // en üstte olmalı
 import { useUserAccess } from "../../../../app/hooks/useUserAccess";
+import { useParams } from "next/navigation"; // varsa tekrar import etme
 
 export default function AlarmPage() {
     const { hasAccess, trialExpired } = useUserAccess("basic");
@@ -16,7 +17,8 @@ export default function AlarmPage() {
     const [alarms, setAlarms] = useState([]);
     const user = auth.currentUser;
     const userId = user ? user.uid : "guest";
-
+    const params = useParams();
+    const locale = params?.locale || 'en';
 
 
     const loadAlarms = async () => {

@@ -10,6 +10,8 @@
     text-align: center;
     box-shadow: rgba(173, 173, 192, 0.2) 0px 7px 29px 0px;
     transition: all 0.3s;
+    background-color: #247d98;
+
 }
 
 .navbarMain:hover{

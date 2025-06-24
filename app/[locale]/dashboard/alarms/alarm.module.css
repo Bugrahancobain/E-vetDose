@@ -100,15 +100,37 @@
   color: #254650;
 }
 
-.deleteBtn {
+.addButton {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #e3f1ee;
+  color: #254650;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.deleteButton {
   background-color: #ff6b6b;
   color: #fff;
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 14px;
   border: none;
-  
   cursor: pointer;
+}
+
+.switchContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .modal {
@@ -217,3 +239,10 @@
 .switch input:checked + .slider:before {
   transform: translateX(22px);
 }
+
+
+  @media screen and (max-width: 768px) {
+    .container{
+      margin-top: 70px;
+    }
+  }

@@ -56,11 +56,14 @@ export async function POST(req) {
             return NextResponse.json({ error: "Başlangıç tarihi geçersiz" }, { status: 400 });
         }
 
+        const eskiAbonelikBitiş = user.subscription?.subscriptionEnd;
+        const yeniBaşlangıç = eskiAbonelikBitiş && eskiAbonelikBitiş > startDate ? eskiAbonelikBitiş : startDate;
+
         user.subscription = {
             status: attr.status || "active",
             plan: planInfo.plan,
             billingCycle: planInfo.billing,
-            subscriptionStart: startDate,
+            subscriptionStart: yeniBaşlangıç,
             subscriptionEnd: endDate ?? renewDate ?? null,
             subscriptionId: data.id,
             customerId: attr.customer_id,

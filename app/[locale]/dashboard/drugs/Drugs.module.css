@@ -92,3 +92,9 @@ color: black;
     background-color: #ff6600;
     color: white;
   }
+
+  @media screen and (max-width: 768px) {
+    .container {
+        margin-top: 70px;
+    }
+    }

@@ -89,6 +89,11 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .alarmList li {
@@ -96,6 +101,9 @@
   border-bottom: 1px solid #eee;
   font-size: 14px;
   color: #333;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .alarmList strong {
@@ -126,7 +134,11 @@
   border: none;
   padding: 8px 12px;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
   cursor: pointer;
+  width: 200px;
 }
 
 /* DOZAJ GEÇMİŞİ */
@@ -182,4 +194,24 @@
 
 .dosageHistoryWrapperLi div, .dosageHistoryWrapperLi strong{
     color: #254650;
+}
+
+/* Mobilde gizle */
+@media (max-width: 768px) {
+.dashboardHomeContainer{
+  margin-top: 50px;
+}
+  .mobileMenuButton {
+    position: fixed;
+    top: 25px;
+    left: 27px;
+    z-index: 10000; /* Sidebar’dan daha yukarıda */
+    background: #247d98;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+  }
 }

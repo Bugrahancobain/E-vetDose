@@ -7,19 +7,24 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from "../../../../firebase";
 import { useRouter } from "next/navigation";
 import styles from "./profile.module.css";
+import { useParams } from "next/navigation"; // varsa tekrar import etme
 
 
 export default function ProfileSettings() {
     const user = auth.currentUser;
     const router = useRouter();
-
+    const params = useParams();
+    const locale = params?.locale || 'en';
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [profileImage, setProfileImage] = useState("");
     const [loading, setLoading] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
     const [billingCycle, setBillingCycle] = useState("monthly");
+
     const [selectedPlan, setSelectedPlan] = useState("556653"); // default: basic monthly
+    const [subscriptionInfo, setSubscriptionInfo] = useState(null);
+
 
     const plans = {
         monthly: [
@@ -47,7 +52,17 @@ export default function ProfileSettings() {
     };
 
     const uid = user?.uid;
-
+    useEffect(() => {
+        if (!uid) return;
+        fetch(`/api/register?uid=${uid}`)
+            .then(res => res.json())
+            .then(data => {
+                setName(data.fullName);
+                setEmail(data.email);
+                setProfileImage(data.profileImage || "/defaultDogImage.png");
+                setSubscriptionInfo(data.subscription || null);
+            });
+    }, [uid]);
     useEffect(() => {
         if (!uid) return;
         fetch(`/api/register?uid=${uid}`)
@@ -99,7 +114,7 @@ export default function ProfileSettings() {
     const handleLogout = async () => {
         try {
             await auth.signOut();
-            router.push("/login");
+            router.push(`/${locale}/login`, { scroll: false });
         } catch (err) {
             alert("Çıkış yapılırken hata oluştu.");
         }
@@ -146,11 +161,48 @@ export default function ProfileSettings() {
 
             {modalOpen && (
                 <div className={styles.modalOverlay}>
+
                     <div className={styles.modalContent}>
+                        {subscriptionInfo?.plan ? (
+                            <div className={styles.subscriptionBox}>
+                                <p>📦 Paket: <strong>{subscriptionInfo.plan}</strong> ({subscriptionInfo.billingCycle})</p>
+                                <p>⏳ Bitiş Tarihi: {new Date(subscriptionInfo.subscriptionEnd).toLocaleDateString()}</p>
+
+                                <button
+                                    className={styles.dangerButton}
+                                    onClick={async () => {
+                                        const res = await fetch("/api/subscription/cancel", {
+                                            method: "POST",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ email })
+                                        });
+                                        const data = await res.json();
+                                        alert(data.message || "İptal edildi.");
+                                    }}
+                                >
+                                    Aboneliği İptal Et
+                                </button>
+                            </div>
+                        ) : subscriptionInfo?.trialEnd ? (
+                            <div className={styles.subscriptionBox}>
+                                <p>🆓 Şu anda ücretsiz deneme süresindesiniz.</p>
+                                <p>⏳ Deneme Bitiş: {new Date(subscriptionInfo.trialEnd).toLocaleDateString()}</p>
+                            </div>
+                        ) : (
+                            <div className={styles.subscriptionBox}>
+                                <p>🕓 Henüz aktif bir aboneliğiniz bulunmamaktadır.</p>
+                            </div>
+                        )}
                         <h3>Abonelik Paketleri</h3>
 
                         <div className={styles.toggleContainer}>
-                            <span>Aylık</span>
+                            <span
+                                className={`${styles.toggleLabel} ${billingCycle === "monthly" ? styles.active : ""}`}
+                                onClick={() => setBillingCycle("monthly")}
+                            >
+                                Aylık
+                            </span>
+
                             <label className={styles.switch}>
                                 <input
                                     type="checkbox"
@@ -159,7 +211,13 @@ export default function ProfileSettings() {
                                 />
                                 <span className={styles.slider}></span>
                             </label>
-                            <span>Yıllık</span>
+
+                            <span
+                                className={`${styles.toggleLabel} ${billingCycle === "yearly" ? styles.active : ""}`}
+                                onClick={() => setBillingCycle("yearly")}
+                            >
+                                Yıllık
+                            </span>
                         </div>
 
                         <select

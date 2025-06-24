@@ -142,3 +142,9 @@
     font-size: large;
     transition: all 0.3s ease;
   }
+
+  @media screen and (max-width: 768px) {
+    .calc-container{
+      margin-top: 70px;
+    }
+  }

@@ -4,6 +4,7 @@
     padding: 2rem;
     background: white;
     border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
   
@@ -79,4 +80,11 @@
     padding: 10px;
     border-radius: 18px;
     border: 2px solid orange ;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin-top: 70px;
+    }
+  
 }

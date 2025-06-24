@@ -7,7 +7,7 @@ import { useUserAccess } from "../../../../app/hooks/useUserAccess";
 import styles from './DoseCalculator.module.css';
 import { auth } from '../../../../firebase';
 import { useRouter } from "next/navigation"; // en üstte olmalı
-
+import { useParams } from "next/navigation"; // varsa tekrar import etme
 
 export default function DoseCalculator() {
     const { hasAccess, trialExpired } = useUserAccess("basic");
@@ -24,6 +24,8 @@ export default function DoseCalculator() {
     const [error, setError] = useState('');
     const [selectedConcentration, setSelectedConcentration] = useState('');
     const [concentrationOptions, setConcentrationOptions] = useState([]);
+    const params = useParams();
+    const locale = params?.locale || 'en';
 
 
     useEffect(() => {

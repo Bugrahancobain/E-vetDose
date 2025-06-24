@@ -1,19 +1,4 @@
-.dashboardSideBarMain{
-    position: fixed; /* Ekrana sabitler */
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    width: 100px;
-    height: 100vh;
-    padding: 15px;
-    
-    z-index: 999; /* diğer içeriklerin altında kalmasın */
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05); /* isteğe bağlı gölge efekti */
-}
+
 
 .dashboardSideBarImgDiv{
     width: 100%;
@@ -41,4 +26,34 @@
     border: 1px solid whitesmoke;
     width: 100%;
     margin-top: 30px;
+}
+.dashboardSideBarMain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 100px;
+    height: 100vh;
+    padding: 15px;
+    background-color: #247d98;
+    color: white;
+    z-index: 999;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Mobilde gizle */
+@media (max-width: 768px) {
+  .dashboardSideBarMain {
+    padding-top: 100px;
+    transform: translateX(-100%);
+  }
+
+  .dashboardSideBarMain.open {
+    transform: translateX(0);
+  }
 }

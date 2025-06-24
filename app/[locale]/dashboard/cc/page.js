@@ -2,11 +2,12 @@
 import React, { useState } from "react";
 import "./MlCalculator.css";
 import { useUserAccess } from "../../../../app/hooks/useUserAccess";
-
+import { useParams, useRouter } from "next/navigation";
 
 export default function MlCalculator() {
     const { hasAccess, trialExpired } = useUserAccess("basic");
-
+    const params = useParams();
+    const locale = params?.locale || 'en';
     const [mode, setMode] = useState("mgml");
 
     // mg/ml mode

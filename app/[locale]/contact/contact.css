@@ -37,12 +37,7 @@
     width: 100%;
     border: none;
     border-bottom: 1px solid black;
-}
-
-.contactForm input::placeholder,
-.contactForm textarea::placeholder
- {
-    color: white;
+    color: black;
 }
 
 .contactForm select{
@@ -127,6 +122,7 @@ button:disabled {
     position: absolute;
     top: 13px;
     left: 10px;
+    color: black;   
 }
 
 .submitButton{

@@ -8,7 +8,6 @@ import styles from './Drugs.module.css';
 import { useRouter } from "next/navigation"; // en üstte olmalı
 import { useUserAccess } from "../../../../app/hooks/useUserAccess";
 
-
 const ITEMS_PER_PAGE = 15;
 
 export default function MedicationList() {

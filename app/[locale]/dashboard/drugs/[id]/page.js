@@ -2,10 +2,14 @@
 import medications from '../../../../../data/medicationsDetailsData.json';
 import styles from './DrugsDetails.module.css';
 import { useRouter } from "next/navigation"; // en üstte olmalı
-
-export default function MedicationDetails({ params }) {
-    const med = medications.find((m) => m.id === params.id);
+import { useParams } from "next/navigation"; // varsa tekrar import etme
+import { useUserAccess } from '../../../../hooks/useUserAccess'; // kullanıcı erişim kontrolü için hook
+export default function MedicationDetails() {
     const { hasAccess, trialExpired } = useUserAccess("basic");
+    const params = useParams();
+    const locale = params?.locale || 'en';
+    const med = medications.find((m) => m.id === params.id);
+
 
     if (!med) return <div>İlaç bulunamadı.</div>;
 

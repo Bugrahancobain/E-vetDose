@@ -1,28 +1,51 @@
-import { useUser } from "../../context/UserContext"; // veya senin user state’ine göre
+import { useEffect, useState } from "react";
+import { auth } from "../../firebase";
 
 // Planların sıralı erişim seviyesi
 const planRank = {
+    trial: 1,
     basic: 1,
     pro: 2,
-    enterprise: 3
+    enterprise: 3,
 };
 
-function checkPlanRank(plan) {
-    return planRank[plan] || 0;
-}
+export function useUserAccess(requiredPlan = "basic") {
+    const [hasAccess, setHasAccess] = useState(false);
+    const [trialExpired, setTrialExpired] = useState(false);
 
-export function useUserAccess(requiredPlan) {
-    const user = useUser(); // senin context veya auth sistemine göre
-    const now = new Date();
+    useEffect(() => {
+        const checkAccess = async () => {
+            const user = auth.currentUser;
+            if (!user) return;
 
-    const isTrial = user?.subscription?.status === "trial" &&
-        new Date(user.subscription.trialEnd) > now;
+            const res = await fetch(`/api/register?uid=${user.uid}`);
+            const data = await res.json();
+            const sub = data.subscription || {};
 
-    const isPaid = user?.subscription?.status === "active" &&
-        checkPlanRank(user.subscription.plan) >= checkPlanRank(requiredPlan);
-    console.log("🔥 User subscription info:", user?.subscription);
-    return {
-        hasAccess: isTrial || isPaid,
-        trialExpired: !isTrial && user?.subscription?.status === "trial"
-    };
+            const now = new Date();
+            const isTrialActive = sub.status === "trial" && sub.trialEnd && new Date(sub.trialEnd) > now;
+            const isTrialExpired = sub.status === "trial" && (!sub.trialEnd || new Date(sub.trialEnd) <= now);
+
+            let userPlan = "basic"; // varsayılan
+            if (isTrialActive) userPlan = "trial";
+            else if (sub.plan) userPlan = sub.plan;
+
+            const userRank = planRank[userPlan] || 0;
+            const requiredRank = planRank[requiredPlan] || 0;
+
+            if (userRank >= requiredRank) {
+                setHasAccess(true);
+            } else {
+                setHasAccess(false);
+            }
+
+            if (userPlan === "trial" && isTrialExpired) {
+                setTrialExpired(true);
+            }
+        };
+
+        checkAccess();
+    }, [requiredPlan]);
+
+    return { hasAccess, trialExpired };
 }

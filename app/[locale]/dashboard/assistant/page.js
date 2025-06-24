@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import { auth } from "../../../../firebase";
 import { useRouter } from "next/navigation"; // en üstte olmalı
 import { useUserAccess } from "../../../../app/hooks/useUserAccess";
+import { useParams } from "next/navigation"; // varsa tekrar import etme
 
 export default function AIAssistant() {
     const { hasAccess, trialExpired } = useUserAccess("pro");
@@ -18,6 +19,8 @@ export default function AIAssistant() {
     const user = auth.currentUser;
     const [lastSentTime, setLastSentTime] = useState(0);
     const userId = user ? user.uid : "guest";
+    const params = useParams();
+    const locale = params?.locale || 'en';
 
     useEffect(() => {
         if (remainingTime === 0) return;

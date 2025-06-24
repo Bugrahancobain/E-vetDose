@@ -8,13 +8,13 @@ import Link from "next/link";
 import { useLocale } from 'next-intl';
 import { useUserAccess } from "../../../../app/hooks/useUserAccess";
 import { useRouter } from "next/navigation"; // en üstte olmalı
+import { useParams } from "next/navigation"; // varsa tekrar import etme
 
 
 
 export default function FindMedicine() {
     const { hasAccess, trialExpired } = useUserAccess("basic");
-
-
+    const params = useParams();
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [expandedCategory, setExpandedCategory] = useState(null);
     const [filteredMedications, setFilteredMedications] = useState([]);
