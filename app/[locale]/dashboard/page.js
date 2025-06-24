@@ -17,11 +17,7 @@ const DashboardHome = () => {
     const router = useRouter();
     const locale = useLocale();
     const pathname = usePathname();
-    const { hasAccess, trialExpired } = useUserAccess("basic"); // enterprise plan kontrolü
-
-
-    // ...
-
+    const { hasAccess, trialExpired, isLoading, user } = useUserAccess("basic");
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -69,6 +65,16 @@ const DashboardHome = () => {
             })
             .catch((err) => console.error("Tip fetch hatası:", err));
     }, []); // sadece bir kere çalışmalı
+
+    if (isLoading || !user) {
+        return (
+            <div className={"loadingWrapper"}>
+                <div className={"spinner"}></div>
+                <p className={"loadingText"}>Veriler yükleniyor, lütfen bekleyin...</p>
+            </div>
+        );
+    }
+
     if (!hasAccess) {
         const router = useRouter();
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"; // en üstte olmalı
 import { useParams } from "next/navigation"; // varsa tekrar import etme
 import { useUserAccess } from '../../../../hooks/useUserAccess'; // kullanıcı erişim kontrolü için hook
 export default function MedicationDetails() {
-    const { hasAccess, trialExpired } = useUserAccess("basic");
+    const { hasAccess, trialExpired, isLoading, user } = useUserAccess("basic");
     const params = useParams();
     const locale = params?.locale || 'en';
     const med = medications.find((m) => m.id === params.id);
@@ -77,7 +77,15 @@ export default function MedicationDetails() {
         return null;
     };
 
-    // ...
+
+    if (isLoading || !user) {
+        return (
+            <div className={styles.loadingWrapper}>
+                <div className={styles.spinner}></div>
+                <p className={styles.loadingText}>Veriler yükleniyor, lütfen bekleyin...</p>
+            </div>
+        );
+    }
 
     if (!hasAccess) {
         const router = useRouter();

@@ -5,23 +5,21 @@ import styles from "./FindMedicine.module.css";
 import medicationsData from "../../../../data/medications.json";
 import anamnesisData from "../../../../data/anamnesis.json";
 import Link from "next/link";
-import { useLocale } from 'next-intl';
+import { useLocale } from "next-intl";
 import { useUserAccess } from "../../../../app/hooks/useUserAccess";
-import { useRouter } from "next/navigation"; // en üstte olmalı
-import { useParams } from "next/navigation"; // varsa tekrar import etme
-
-
+import { useRouter, useParams } from "next/navigation";
 
 export default function FindMedicine() {
-    const { hasAccess, trialExpired } = useUserAccess("basic");
+    const { hasAccess, trialExpired, isLoading, user } = useUserAccess("basic");
+    const router = useRouter();
     const params = useParams();
+    const locale = useLocale();
+
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [expandedCategory, setExpandedCategory] = useState(null);
     const [filteredMedications, setFilteredMedications] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [showPopup, setShowPopup] = useState(false);
-    const locale = useLocale();
-
 
     const toggleCategory = (categoryId) => {
         setExpandedCategory((prev) => (prev === categoryId ? null : categoryId));
@@ -63,63 +61,32 @@ export default function FindMedicine() {
                 category.options.length > 0
         );
 
-    // ...
-
-    if (!hasAccess) {
-        const router = useRouter();
-
+    // 👉 Erişim sorgulanıyor
+    if (isLoading || !user) {
         return (
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100vh",
-                    background: "linear-gradient(to bottom right, #f5f7fa, #c3cfe2)",
-                    padding: "40px",
-                    textAlign: "center",
-                }}
-            >
-                <div
-                    style={{
-                        backgroundColor: "#fff",
-                        borderRadius: "16px",
-                        padding: "40px",
-                        maxWidth: "600px",
-                        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: "24px",
-                    }}
-                >
-                    <h2 style={{ fontSize: "1.5rem", color: "#e63946", fontWeight: "700" }}>
+            <div className={styles.loadingWrapper}>
+                <div className={styles.spinner}></div>
+                <p className={styles.loadingText}>Veriler yükleniyor, lütfen bekleyin...</p>
+            </div>
+        );
+    }
+
+    // ❌ Erişim yok
+    if (!hasAccess) {
+        return (
+            <div className={styles.accessWrapper}>
+                <div className={styles.accessCard}>
+                    <h2 className={styles.accessTitle}>
                         {trialExpired ? "🚫 Deneme Süresi Sona Erdi" : "❌ Erişim Engellendi"}
                     </h2>
-
-                    <p style={{ fontSize: "1.1rem", color: "#333" }}>
+                    <p className={styles.accessMessage}>
                         {trialExpired
                             ? "Deneme süreniz doldu. Lütfen bir plan seçmek için profil sayfanıza gidin."
                             : "Bu sayfaya erişiminiz yok. Aboneliğinizi kontrol etmek için profil sayfanıza gidebilirsiniz."}
                     </p>
-
                     <button
+                        className={styles.profileButton}
                         onClick={() => router.push(`/${locale}/dashboard/profile`)}
-                        style={{
-                            padding: "12px 24px",
-                            backgroundColor: "#0070f3",
-                            color: "#fff",
-                            border: "none",
-                            borderRadius: "8px",
-                            cursor: "pointer",
-                            fontSize: "1rem",
-                            fontWeight: "600",
-                            boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
-                            transition: "all 0.3s ease",
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.backgroundColor = "#0059c9"}
-                        onMouseLeave={e => e.currentTarget.style.backgroundColor = "#0070f3"}
                     >
                         👤 Profili Görüntüle
                     </button>
@@ -127,19 +94,21 @@ export default function FindMedicine() {
             </div>
         );
     }
+
+    // ✅ Erişim varsa asıl içerik
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Anamnez Formu</h1>
-
             <input
                 className={styles.searchInput}
                 placeholder="Anamnez Ara..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
             />
+
             <div className={styles.gridWrapper}>
                 {filteredCategories.map((category) => (
-                    <div style={{ backgroundColor: "transparent" }} key={category.id}>
+                    <div key={category.id} style={{ backgroundColor: "transparent" }}>
                         <div
                             className={styles.categoryHeader}
                             onClick={() => toggleCategory(category.id)}
@@ -168,6 +137,7 @@ export default function FindMedicine() {
                     </div>
                 ))}
             </div>
+
             <div className={styles.buttonContainer}>
                 <button className={styles.clearButton} onClick={resetSelections}>
                     Seçimleri Temizle
@@ -188,12 +158,8 @@ export default function FindMedicine() {
                             {filteredMedications.map((medication) => (
                                 <div key={medication.id} className={styles.medicationItem}>
                                     <h3 className={styles.medicationName}>{medication.name}</h3>
-                                    <p>
-                                        <strong>Kullanım Alanı:</strong> {medication.description}
-                                    </p>
-                                    <p>
-                                        <strong>Yan Etkiler:</strong> {medication.sideEffects}
-                                    </p>
+                                    <p><strong>Kullanım Alanı:</strong> {medication.description}</p>
+                                    <p><strong>Yan Etkiler:</strong> {medication.sideEffects}</p>
                                     <Link
                                         href={`/${locale}/dashboard/drugs/${medication.id}`}
                                         className={styles.detailButton}

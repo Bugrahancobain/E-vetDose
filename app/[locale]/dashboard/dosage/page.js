@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation"; // en üstte olmalı
 import { useParams } from "next/navigation"; // varsa tekrar import etme
 
 export default function DoseCalculator() {
-    const { hasAccess, trialExpired } = useUserAccess("basic");
+    const { hasAccess, trialExpired, isLoading, user } = useUserAccess("basic");
     const [medications, setMedications] = useState([]);
     const [filteredMedications, setFilteredMedications] = useState([]);
     const [selectedMedication, setSelectedMedication] = useState(null);
@@ -149,7 +149,15 @@ export default function DoseCalculator() {
 
 
 
-    // ...
+
+    if (isLoading || !user) {
+        return (
+            <div className={styles.loadingWrapper}>
+                <div className={styles.spinner}></div>
+                <p className={styles.loadingText}>Veriler yükleniyor, lütfen bekleyin...</p>
+            </div>
+        );
+    }
 
     if (!hasAccess) {
         const router = useRouter();

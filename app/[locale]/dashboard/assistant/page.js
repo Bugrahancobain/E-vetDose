@@ -1,30 +1,75 @@
-"use client";
+'use client';
 import { useEffect, useRef, useState } from "react";
 import styles from "./ai-assistant.module.css";
 import { sendMessageToChatGPT, uploadImageToGridFS, fetchMessageHistory, saveMessage } from "../../../../api.js";
 import { v4 as uuidv4 } from "uuid";
 import { auth } from "../../../../firebase";
-import { useRouter } from "next/navigation"; // en üstte olmalı
+import { useRouter, useParams } from "next/navigation";
 import { useUserAccess } from "../../../../app/hooks/useUserAccess";
-import { useParams } from "next/navigation"; // varsa tekrar import etme
 
 export default function AIAssistant() {
+    const router = useRouter();
+    const params = useParams();
+    const locale = params?.locale || "en";
     const { hasAccess, trialExpired } = useUserAccess("pro");
-    const [inputText, setInputText] = useState("");
+
+    const [user, setUser] = useState(null);
     const [messages, setMessages] = useState([]);
+    const [inputText, setInputText] = useState("");
     const [selectedImage, setSelectedImage] = useState(null);
     const [isTyping, setIsTyping] = useState(false);
     const [remainingTime, setRemainingTime] = useState(0);
-    const flatListRef = useRef(null);
-    const user = auth.currentUser;
     const [lastSentTime, setLastSentTime] = useState(0);
-    const userId = user ? user.uid : "guest";
-    const params = useParams();
-    const locale = params?.locale || 'en';
+    const [isLoading, setIsLoading] = useState(true);
 
+    const flatListRef = useRef(null);
+    const scrollToBottom = () => {
+        if (flatListRef.current) {
+            flatListRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+    // Kullanıcıyı kontrol et
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((u) => {
+            setUser(u);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    // Mesaj geçmişini getir
+    useEffect(() => {
+        const loadMessages = async () => {
+            if (!user) return;
+
+            try {
+                const data = await fetchMessageHistory(user.uid);
+                const sorted = data.sort((a, b) => a.timestamp - b.timestamp);
+                if (sorted.length === 0) {
+                    const welcomeMessage = {
+                        _id: uuidv4(),
+                        text: "Merhabalar Veteriner Hekim, bugün size nasıl yardımcı olabilirim?",
+                        sender: "bot",
+                        timestamp: Date.now(),
+                    };
+                    await saveMessage(user.uid, welcomeMessage);
+                    setMessages([welcomeMessage]);
+                } else {
+                    setMessages(sorted);
+                }
+            } catch (err) {
+                console.error("Mesajlar alınamadı:", err);
+                setMessages([]);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadMessages();
+    }, [user]);
+
+    // Geri sayım süresi
     useEffect(() => {
         if (remainingTime === 0) return;
-
         const interval = setInterval(() => {
             setRemainingTime((prev) => {
                 if (prev <= 1) {
@@ -37,42 +82,14 @@ export default function AIAssistant() {
 
         return () => clearInterval(interval);
     }, [remainingTime]);
-    // Mesaj geçmişini çek
-    useEffect(() => {
-        const loadMessages = async () => {
-            try {
-                const data = await fetchMessageHistory(userId);
-                const sorted = data.sort((a, b) => a.timestamp - b.timestamp);
-                if (sorted.length === 0) {
-                    const welcomeMessage = {
-                        _id: uuidv4(),
-                        text: "Merhabalar Veteriner Hekim, bugün size nasıl yardımcı olabilirim?",
-                        sender: "bot",
-                        timestamp: Date.now(),
-                    };
-                    await saveMessage(userId, welcomeMessage);
-                    setMessages([welcomeMessage]);
-                } else {
-                    setMessages(sorted);
-                }
-            } catch (err) {
-                console.error("Mesajlar alınamadı:", err);
-                setMessages([]);
-            }
-        };
-        loadMessages();
-    }, []);
 
-    const scrollToBottom = () => {
-        flatListRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
-    console.log("auth.currentUser", auth.currentUser);
+    // Scroll to bottom
     useEffect(() => {
-        scrollToBottom();
+        flatListRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
     const handleImageUpload = async (file) => {
-        const uploaded = await uploadImageToGridFS(file, userId);
+        const uploaded = await uploadImageToGridFS(file, user.uid);
         return uploaded;
     };
 
@@ -83,6 +100,7 @@ export default function AIAssistant() {
             alert("Lütfen 10 saniye bekleyin.");
             return;
         }
+
         setRemainingTime(10);
         setLastSentTime(Date.now());
 
@@ -101,7 +119,7 @@ export default function AIAssistant() {
         setIsTyping(true);
         scrollToBottom();
 
-        await saveMessage(userId, newUserMessage);
+        await saveMessage(user.uid, newUserMessage);
 
         try {
             const gptResponse = await sendMessageToChatGPT(newUserMessage.text);
@@ -122,140 +140,91 @@ export default function AIAssistant() {
                         timestamp: Date.now(),
                     };
                     setMessages((prev) => [...updatedMessages, finalBotMessage]);
-                    saveMessage(userId, finalBotMessage);
+                    saveMessage(user.uid, finalBotMessage);
                     setIsTyping(false);
                 }
             }, 20);
         } catch (err) {
             console.error("AI cevabı alınamadı:", err);
-            setIsTyping(false); // 🔴 hatada da kilidi kaldır
+            setIsTyping(false);
         }
     };
 
-
-    // ...
-
-    if (!hasAccess) {
-        const router = useRouter();
-
-        return (
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100vh",
-                    background: "linear-gradient(to bottom right, #f5f7fa, #c3cfe2)",
-                    padding: "40px",
-                    textAlign: "center",
-                }}
-            >
-                <div
-                    style={{
-                        backgroundColor: "#fff",
-                        borderRadius: "16px",
-                        padding: "40px",
-                        maxWidth: "600px",
-                        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: "24px",
-                    }}
-                >
-                    <h2 style={{ fontSize: "1.5rem", color: "#e63946", fontWeight: "700" }}>
+    return (
+        <div className={styles.container}>
+            {isLoading || !user ? (
+                <div className={styles.loadingWrapper}>
+                    <div className={styles.spinner}></div>
+                    <p className={styles.loadingText}>Veriler yükleniyor, lütfen bekleyin...</p>
+                </div>
+            ) : !hasAccess ? (
+                <div className={styles.accessWrapper}>
+                    <h2>
                         {trialExpired ? "🚫 Deneme Süresi Sona Erdi" : "❌ Erişim Engellendi"}
                     </h2>
-
-                    <p style={{ fontSize: "1.1rem", color: "#333" }}>
+                    <p>
                         {trialExpired
                             ? "Deneme süreniz doldu. Lütfen bir plan seçmek için profil sayfanıza gidin."
                             : "Bu sayfaya erişiminiz yok. Aboneliğinizi kontrol etmek için profil sayfanıza gidebilirsiniz."}
                     </p>
-
-                    <button
-                        onClick={() => router.push(`/${locale}/dashboard/profile`)}
-                        style={{
-                            padding: "12px 24px",
-                            backgroundColor: "#0070f3",
-                            color: "#fff",
-                            border: "none",
-                            borderRadius: "8px",
-                            cursor: "pointer",
-                            fontSize: "1rem",
-                            fontWeight: "600",
-                            boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
-                            transition: "all 0.3s ease",
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.backgroundColor = "#0059c9"}
-                        onMouseLeave={e => e.currentTarget.style.backgroundColor = "#0070f3"}
-                    >
+                    <button onClick={() => router.push(`/${locale}/dashboard/profile`)}>
                         👤 Profili Görüntüle
                     </button>
                 </div>
-            </div>
-        );
-    }
-    return (
-        <div className={styles.container}>
-            <div className={styles.chatBox}>
-                {Array.isArray(messages) && messages.map((msg) => (
-                    <div key={msg._id} className={msg.sender === "user" ? styles.userMsg : styles.botMsg}>
-                        {msg.text}
-                        {msg.image && <img src={msg.image} className={styles.image} />}
+            ) : (
+                <>
+                    <div className={styles.chatBox}>
+                        {messages.map((msg) => (
+                            <div key={msg._id} className={msg.sender === "user" ? styles.userMsg : styles.botMsg}>
+                                {msg.text}
+                                {msg.image && <img src={msg.image} className={styles.image} />}
+                            </div>
+                        ))}
+                        <div ref={flatListRef} />
                     </div>
-                ))}
-                <div ref={flatListRef} />
-            </div>
-            {selectedImage && (
-                <div className={styles.previewWrapper}>
-                    <div className={styles.previewContainer}>
-                        <img
-                            src={URL.createObjectURL(selectedImage)}
-                            alt="Önizleme"
-                            className={styles.previewImage}
+
+                    {selectedImage && (
+                        <div className={styles.previewWrapper}>
+                            <div className={styles.previewContainer}>
+                                <img src={URL.createObjectURL(selectedImage)} alt="Önizleme" className={styles.previewImage} />
+                                <button onClick={() => setSelectedImage(null)} className={styles.removePreview}>X</button>
+                            </div>
+                        </div>
+                    )}
+
+                    <div className={styles.inputArea}>
+                        <label htmlFor="file-upload" className={styles.customFileButton}>+</label>
+                        <input
+                            id="file-upload"
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => setSelectedImage(e.target.files[0])}
+                            className={styles.hiddenFileInput}
                         />
-                        <button onClick={() => setSelectedImage(null)} className={styles.removePreview}>
-                            X
+                        <input
+                            type="text"
+                            value={inputText}
+                            placeholder={
+                                isTyping
+                                    ? "Lütfen AI Hekimin cevabını bekleyin..."
+                                    : remainingTime > 0
+                                        ? `Lütfen ${remainingTime} saniye bekleyin...`
+                                        : "Mesaj yazın..."
+                            }
+                            onChange={(e) => setInputText(e.target.value)}
+                            className={styles.textInput}
+                            disabled={isTyping || remainingTime > 0}
+                        />
+                        <button
+                            onClick={handleSendMessage}
+                            className={styles.sendBtn}
+                            disabled={isTyping || remainingTime > 0}
+                        >
+                            Gönder
                         </button>
                     </div>
-                </div>
+                </>
             )}
-            <div className={styles.inputArea}>
-                <label htmlFor="file-upload" className={styles.customFileButton}>
-                    +
-                </label>
-                <input
-                    id="file-upload"
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setSelectedImage(e.target.files[0])}
-                    className={styles.hiddenFileInput}
-                />
-
-                <input
-                    type="text"
-                    value={inputText}
-                    placeholder={
-                        isTyping
-                            ? "Lütfen AI Hekimin cevabını bekleyin..."
-                            : remainingTime > 0
-                                ? `Lütfen ${remainingTime} saniye bekleyin...`
-                                : "Mesaj yazın..."
-                    }
-                    onChange={(e) => setInputText(e.target.value)}
-                    className={styles.textInput}
-                    disabled={isTyping || remainingTime > 0}
-                />
-                <button
-                    onClick={handleSendMessage}
-                    className={styles.sendBtn}
-                    disabled={isTyping || remainingTime > 0}
-                >
-                    Gönder
-                </button>
-            </div>
         </div>
     );
 }

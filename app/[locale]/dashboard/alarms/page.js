@@ -1,14 +1,14 @@
 "use client";
-
+import { useRouter } from "next/navigation"; // en üstte olmalı
 import { useState, useEffect } from "react";
 import styles from "./alarm.module.css";
 import { saveAlarm, fetchAlarms, deleteAlarm } from "../../../../api";
 import { auth } from "../../../../firebase";
-import { useRouter } from "next/navigation"; // en üstte olmalı
 import { useUserAccess } from "../../../../app/hooks/useUserAccess";
 import { useParams } from "next/navigation"; // varsa tekrar import etme
 
 export default function AlarmPage() {
+    const router = useRouter();
     const { hasAccess, trialExpired } = useUserAccess("basic");
     const [patientName, setPatientName] = useState("");
     const [description, setDescription] = useState("");
@@ -19,12 +19,30 @@ export default function AlarmPage() {
     const userId = user ? user.uid : "guest";
     const params = useParams();
     const locale = params?.locale || 'en';
+    const [isLoading, setIsLoading] = useState(true);
 
-
-    const loadAlarms = async () => {
-        const data = await fetchAlarms(user.uid);
+    const loadAlarms = async (uid) => {
+        const data = await fetchAlarms(uid);
         setAlarms(data.alarms || []);
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (user) {
+                await loadAlarms(user.uid);
+            }
+            setIsLoading(false);
+        };
+        fetchData();
+    }, [user]);
+    if (isLoading) {
+        return (
+            <div className={styles.loadingWrapper}>
+                <div className={styles.spinner}></div>
+                <p className={styles.loadingText}>Veriler yükleniyor, lütfen bekleyin...</p>
+            </div>
+        );
+    }
 
     const handleAddAlarm = async () => {
         if (!patientName || !description || !time) {
@@ -47,25 +65,11 @@ export default function AlarmPage() {
         loadAlarms();
     };
 
-
-
-    useEffect(() => {
-        if (user) {
-            loadAlarms();
-        }
-    }, [user]);
-
     const handleDelete = async (alarmId) => {
         await deleteAlarm(user.uid, alarmId);
         loadAlarms();
     };
-
-
-    // ...
-
     if (!hasAccess) {
-        const router = useRouter();
-
         return (
             <div
                 style={{

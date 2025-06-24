@@ -11,12 +11,12 @@ import { useUserAccess } from "../../../../app/hooks/useUserAccess";
 const ITEMS_PER_PAGE = 15;
 
 export default function MedicationList() {
-    const { hasAccess, trialExpired } = useUserAccess("basic");
+    const { hasAccess, trialExpired, isLoading, user } = useUserAccess("basic");
+    const router = useRouter();
     const { locale } = useParams();
     const [search, setSearch] = useState('');
     const [filtered, setFiltered] = useState(medications);
     const [currentPage, setCurrentPage] = useState(1);
-
 
     useEffect(() => {
         const lower = search.toLowerCase();
@@ -39,7 +39,7 @@ export default function MedicationList() {
         });
 
         setFiltered(results);
-        setCurrentPage(1); // arama sonrası başa dön
+        setCurrentPage(1);
     }, [search]);
 
     const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
@@ -53,11 +53,16 @@ export default function MedicationList() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    // ...
+    if (isLoading || !user) {
+        return (
+            <div className={styles.loadingWrapper}>
+                <div className={styles.spinner}></div>
+                <p className={styles.loadingText}>Veriler yükleniyor, lütfen bekleyin...</p>
+            </div>
+        );
+    }
 
     if (!hasAccess) {
-        const router = useRouter();
-
         return (
             <div
                 style={{

@@ -8,6 +8,8 @@ import { auth } from "../../../../firebase";
 import { useRouter } from "next/navigation";
 import styles from "./profile.module.css";
 import { useParams } from "next/navigation"; // varsa tekrar import etme
+import { useUserAccess } from "../../../../app/hooks/useUserAccess";
+
 
 
 export default function ProfileSettings() {
@@ -24,6 +26,8 @@ export default function ProfileSettings() {
 
     const [selectedPlan, setSelectedPlan] = useState("556653"); // default: basic monthly
     const [subscriptionInfo, setSubscriptionInfo] = useState(null);
+    const { isLoading } = useUserAccess("trial", "basic", "pro", "enterprise");
+
 
 
     const plans = {
@@ -119,6 +123,15 @@ export default function ProfileSettings() {
             alert("Çıkış yapılırken hata oluştu.");
         }
     };
+
+    if (isLoading || !user) {
+        return (
+            <div className={styles.loadingWrapper}>
+                <div className={styles.spinner}></div>
+                <p className={styles.loadingText}>Veriler yükleniyor, lütfen bekleyin...</p>
+            </div>
+        );
+    }
 
     return (
         <div className={styles.container}>
