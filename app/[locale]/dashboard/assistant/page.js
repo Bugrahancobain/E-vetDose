@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from "react";
 import styles from "./ai-assistant.module.css";
-import { uploadImageToGridFS, fetchMessageHistory, saveMessage } from "../../../../api.js";
+import { sendMessageToChatGPT, uploadImageToGridFS, fetchMessageHistory, saveMessage } from "../../../../api.js";
 import { v4 as uuidv4 } from "uuid";
 import { auth } from "../../../../firebase";
 import { useRouter, useParams } from "next/navigation";
@@ -21,7 +21,6 @@ export default function AIAssistant() {
     const [remainingTime, setRemainingTime] = useState(0);
     const [lastSentTime, setLastSentTime] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-
     const flatListRef = useRef(null);
     const scrollToBottom = () => {
         if (flatListRef.current) {
@@ -51,6 +50,7 @@ export default function AIAssistant() {
                         sender: "bot",
                         timestamp: Date.now(),
                     };
+
                     await saveMessage(user.uid, welcomeMessage);
                     setMessages([welcomeMessage]);
                 } else {
@@ -87,23 +87,7 @@ export default function AIAssistant() {
     useEffect(() => {
         flatListRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
-    const sendMessageToChatGPT = async (prompt) => {
-        const res = await fetch("/api/messages", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                messages: [{ role: "user", content: prompt }]
-            }),
-        });
 
-        if (!res.ok) {
-            const error = await res.text();
-            throw new Error("OpenAI API hatası: " + error);
-        }
-
-        const data = await res.json();
-        return data.response;
-    };
     const handleImageUpload = async (file) => {
         const uploaded = await uploadImageToGridFS(file, user.uid);
         return uploaded;
@@ -138,7 +122,7 @@ export default function AIAssistant() {
         await saveMessage(user.uid, newUserMessage);
 
         try {
-            const gptResponse = await sendMessageToChatGPT(newUserMessage.text);
+            const gptResponse = await sendMessageToChatGPT([...updatedMessages]);
             let botText = "";
             const typingInterval = setInterval(() => {
                 if (botText.length < gptResponse.length) {
@@ -165,7 +149,6 @@ export default function AIAssistant() {
             setIsTyping(false);
         }
     };
-
     return (
         <div className={styles.container}>
             {isLoading || !user ? (

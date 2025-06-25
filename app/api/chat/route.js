@@ -1,29 +1,37 @@
 import { NextResponse } from "next/server";
-import { OpenAI } from "openai";
-
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
 
 export async function POST(req) {
-    try {
-        const body = await req.json(); // ✅ req.body yerine bu
-        const { messages } = body;
+    const { messages } = await req.json();
 
-        const completion = await openai.chat.completions.create({
-            model: 'gpt-4',
-            messages: messages.map(msg => ({ role: msg.role, content: msg.content })),
-            max_tokens: 1000,
-            temperature: 0.7,
+    if (!messages || messages.length === 0) {
+        return NextResponse.json({ error: "Eksik veri" }, { status: 400 });
+    }
+
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+    try {
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${OPENAI_API_KEY}`,
+            },
+            body: JSON.stringify({
+                model: "gpt-4.1",
+                messages,
+                temperature: 0.7,
+            }),
         });
 
-        const response = completion.choices[0]?.message?.content;
-        return NextResponse.json({ response }); // ✅ res.status yerine
+        const data = await response.json();
+
+        if (!data.choices || !data.choices[0]) {
+            return NextResponse.json({ error: "OpenAI yanıt vermedi" }, { status: 500 });
+        }
+
+        return NextResponse.json({ response: data.choices[0].message.content });
     } catch (err) {
-        console.error("OpenAI Error:", err);
-        return NextResponse.json(
-            { error: "Mesaj gönderilemedi." },
-            { status: 500 }
-        );
+        console.error("OpenAI hatası:", err);
+        return NextResponse.json({ error: "Sunucu hatası" }, { status: 500 });
     }
 }
