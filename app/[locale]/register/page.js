@@ -63,8 +63,7 @@ export default function RegisterPage() {
                 <input type="password" placeholder={t('confirmPasswordPlaceholder')} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} className="registerInput" required />
                 <div className="registerCheckbox">
                     <input type="checkbox" checked={termsAccepted} onChange={() => setTermsAccepted(prev => !prev)} required />
-                    <span onClick={() => setShowTerms(true)} className="termsText">{t('termsText')}</span>
-                </div>
+                    <span onClick={() => setShowTerms(true)} className="termsText">{t('termsText')}</span>                </div>
                 <button type="submit" className="registerButton" disabled={loading}>
                     {loading ? t('submitting') : t('submit')}
                 </button>
@@ -74,11 +73,22 @@ export default function RegisterPage() {
             </form>
 
             {showTerms && (
-                <div className="termsModal">
-                    <div className="termsContent">
-                        <h2>{t('termsTitle')}</h2>
-                        <div className="termsScroll">
-                            <p>[Kullanıcı sözleşmesi metni buraya gelecek]</p>
+                <div className="modalOverlay">
+                    <div className="modalContent">
+                        <h2 className="modalTitle">{t('termsTitle')}</h2>
+                        <div className="modalText">
+                            <p>
+                                Bu uygulama, veteriner hekimler için pratik bir yardımcı araç olarak geliştirilmiştir. Ancak içerikte yer alan dozaj hesaplamaları, ilaç bilgileri ve yönlendirmeler yalnızca genel bilgilendirme amacı taşır.
+                            </p>
+                            <p>
+                                Uygulamada sunulan bilgiler tıbbi tavsiye yerine geçmez ve doğruluğu garanti edilmez. Her kullanıcının, verdiği kararların ve uygulamaların sorumluluğu tamamen kendisine aittir.
+                            </p>
+                            <p>
+                                Bu uygulamanın kullanımı sonucu doğabilecek doğrudan veya dolaylı herhangi bir sağlık problemi, yasal uyuşmazlık, mesleki zarar veya üçüncü şahıslarla yaşanabilecek sorunlardan geliştirici ve yayıncı hiçbir şekilde sorumlu tutulamaz.
+                            </p>
+                            <p>
+                                Bu uygulamayı kullanarak, yukarıdaki maddeleri okuduğunuzu, anladığınızı ve tüm sorumluluğun tarafınıza ait olduğunu kabul etmiş sayılırsınız.
+                            </p>
                         </div>
                         <button className="modalButton" onClick={() => {
                             setTermsAccepted(true);

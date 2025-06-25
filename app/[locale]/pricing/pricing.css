@@ -188,3 +188,9 @@
   .pricingCard.active {
     border: 1px solid orange;
   }
+
+  @media (max-width: 768px) {
+    .pricingMain{
+      padding: 150px 20px 0 20px;
+    }
+  }

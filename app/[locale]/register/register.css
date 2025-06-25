@@ -4,8 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 150px;
-    padding-bottom: 50px;
+    padding: 150px 20px;
   }
   
   .registerForm {
@@ -100,6 +99,7 @@
   .modalContent {
     background-color: white;
     padding: 20px;
+    margin: 20px;
     max-width: 600px;
     max-height: 80vh;
     overflow-y: auto;
@@ -155,3 +155,16 @@
   .registerLoginRedirect a span{
     text-decoration: underline;
   }
+
+  .termsText {
+  background-color: white;
+  color: #254650;
+  padding-left: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modalText p{
+  color: black;
+
+}

@@ -12,7 +12,7 @@ function HomeFirstComponent({ locale }) {
 
     return (
         <div className='homeFirstComponentMain'>
-            <div>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: "0 20px" }}>
                 <div className='appMarketMain'>
                     <div className='appMarketDiv'>
                         <Link href="#" target="_blank">

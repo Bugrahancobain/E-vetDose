@@ -37,3 +37,51 @@ gap: 30px;
     font-weight: bold;
 color: white;
 }
+
+/* Mevcut stiller korunuyor, yeniler eklendi */
+
+.burgerButton {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 20;
+}
+
+/* Mobil görünüm */
+@media (max-width: 1024px) {
+
+    .navbarMain{
+        justify-content: space-between;
+        padding: 50px 25px;
+    }
+    .burgerButton {
+        display: block;
+    }
+
+    .navbarLink {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        background-color: #247d98;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        display: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navbarLink.open {
+        display: flex;
+    }
+.navbarLogin{
+    display: flex;
+
+}
+    .navbarLogin a {
+        display: none; /* Giriş butonunu menü içine aldığımız için */
+    }
+}

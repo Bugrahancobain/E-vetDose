@@ -41,6 +41,8 @@ font-size: 24px;
 
 .trusted{
     background-color: white;
+    width: 100%;
+    padding: 0;
     color: #247d98;
     padding: 10px;
     border-radius: 16px;
@@ -81,4 +83,11 @@ font-size: 24px;
 
 .homeFirstComponentFeaturesWrap a:hover{
     box-shadow: rgba(173, 173, 192, 1) 0px 10px 35px 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .trusted{
+        font-size: 12px;
+    }
+    
 }

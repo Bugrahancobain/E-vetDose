@@ -57,3 +57,24 @@
 .FooterPolicyDiv a{
     text-decoration: none;
 }
+
+@media (max-width: 768px) {
+    .footerInfo{
+        flex-direction: column;
+        align-items: center;
+    }
+    .footerContactDiv, .footerResourcesDiv{
+        width: 100%;
+        align-items: center;
+    }
+    .footerBottom{
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 20px;
+    }
+    .FooterPolicyDiv{
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+}

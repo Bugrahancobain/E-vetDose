@@ -93,5 +93,16 @@
 
 .homeThirdComponentBtn:hover{
     box-shadow: rgba(173, 173, 192, 1) 0px 10px 35px 0px;
+}
 
+@media screen and (max-width: 768px) {
+    .homeThirdComponentFirstDiv, .homeThirdComponentThirdDiv{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .homeThirdComponentFirstDiv div, .homeThirdComponentThirdDiv div{
+        width: 100%;
+    }
+    
 }
