@@ -1,27 +1,33 @@
 export async function sendMessageToChatGPT(messages) {
-    const filteredMessages = messages
-        .map(msg => ({
-            role: msg.sender === "user" ? "user" : "assistant",
-            content: msg.text?.trim() || null,
-        }))
-        .filter(msg => msg.content);
+    const formattedMessages = messages.map((msg) => {
+        if (msg.image) {
+            return {
+                role: msg.sender === "user" ? "user" : "assistant",
+                content: [
+                    { type: "text", text: msg.text || "Bir görsel gönderildi." },
+                    { type: "image_url", image_url: { url: msg.image } }
+                ]
+            };
+        } else {
+            return {
+                role: msg.sender === "user" ? "user" : "assistant",
+                content: msg.text
+            };
+        }
+    });
 
     const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ messages: filteredMessages }),
+        body: JSON.stringify({
+            messages: formattedMessages,
+        }),
     });
 
-    if (!res.ok) {
-        const errorText = await res.text();
-        console.error("OpenAI API hatası:", errorText);
-        throw new Error(`OpenAI API hatası: ${errorText}`);
-    }
-
     const data = await res.json();
-    return data.response;
+    return data.response || "AI cevap veremedi.";
 }
 
 const toBase64 = (file) =>

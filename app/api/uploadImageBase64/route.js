@@ -3,7 +3,8 @@ import User from "../../../models/User";
 
 export async function POST(req) {
     try {
-        const { userId, fileName, base64Image } = await req.json();
+        const body = await req.json(); // ✔️ düzeltme burada
+        const { userId, fileName, base64Image } = body;
 
         if (!userId || !base64Image) {
             return new Response(JSON.stringify({ error: "Eksik veri" }), { status: 400 });

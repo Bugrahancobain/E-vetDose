@@ -62,12 +62,12 @@ export default function AlarmPage() {
         setDescription("");
         setTime("");
         setIsDaily(false);
-        loadAlarms();
+        await loadAlarms(userId);
     };
 
     const handleDelete = async (alarmId) => {
         await deleteAlarm(user.uid, alarmId);
-        loadAlarms();
+        await loadAlarms(userId);
     };
     if (!hasAccess) {
         return (

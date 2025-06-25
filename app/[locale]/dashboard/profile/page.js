@@ -34,12 +34,12 @@ export default function ProfileSettings() {
         monthly: [
             { id: "556653", name: "Basic", price: "$35.99/ay" },
             { id: "556664", name: "Pro", price: "$59.99/ay" },
-            { id: "556665", name: "Enterprise", price: "$119.99/ay" },
+            // { id: "556665", name: "Enterprise", price: "$119.99/ay" },
         ],
         yearly: [
             { id: "556667", name: "Basic", price: "$359.99/yıl ($29.99/ay)" },
             { id: "556668", name: "Pro", price: "$599.99/yıl ($49.99/ay)" },
-            { id: "556669", name: "Enterprise", price: "$1199.99/yıl ($99.99/ay)" },
+            // { id: "556669", name: "Enterprise", price: "$1199.99/yıl ($99.99/ay)" },
         ]
     };
 
