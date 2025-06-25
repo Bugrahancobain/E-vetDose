@@ -118,11 +118,14 @@ button:disabled {
     text-align: start;
 }
 
-.formGroup .formIcon{
+.formIcon{
     position: absolute;
-    top: 13px;
+    top: 9px;
     left: 10px;
-    color: black;   
+    color: black !important;   
+    font-size: 18px;
+    fill: black !important;
+    
 }
 
 .submitButton{
@@ -157,6 +160,7 @@ button:disabled {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     }
     .formGroup input, .formGroup textarea{
         width: 100% !important;
@@ -164,6 +168,9 @@ button:disabled {
 
     .contactFormText{
         width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .contactMarkt{
@@ -189,6 +196,9 @@ button:disabled {
         justify-content: center;
         gap: 50px;
     }
+    .formGroup input, .formGroup textarea{
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 450px) {
@@ -202,4 +212,9 @@ button:disabled {
     .formClassTest{
         width: 90% !important;
     }
+    .formGroup input, .formGroup textarea{
+        font-size: 12px;
+    }
+
+    
 }
