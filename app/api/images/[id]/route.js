@@ -1,4 +1,4 @@
-import connectToDB from "../../../mongodb";
+import connectToDB from "../../../../mongodb";
 import { GridFSBucket, ObjectId } from "mongodb";
 
 export async function GET(req, { params }) {
