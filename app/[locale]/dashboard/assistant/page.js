@@ -88,7 +88,7 @@ export default function AIAssistant() {
         flatListRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
     const sendMessageToChatGPT = async (prompt) => {
-        const res = await fetch("/api/message", {
+        const res = await fetch("/api/messages", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
