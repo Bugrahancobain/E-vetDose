@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from "react";
 import styles from "./ai-assistant.module.css";
-import { sendMessageToChatGPT, uploadImageToGridFS, fetchMessageHistory, saveMessage } from "../../../../api.js";
+import { uploadImageToGridFS, fetchMessageHistory, saveMessage } from "../../../../api.js";
 import { v4 as uuidv4 } from "uuid";
 import { auth } from "../../../../firebase";
 import { useRouter, useParams } from "next/navigation";
@@ -87,7 +87,23 @@ export default function AIAssistant() {
     useEffect(() => {
         flatListRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
+    const sendMessageToChatGPT = async (prompt) => {
+        const res = await fetch("/api/message", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                messages: [{ role: "user", content: prompt }]
+            }),
+        });
 
+        if (!res.ok) {
+            const error = await res.text();
+            throw new Error("OpenAI API hatası: " + error);
+        }
+
+        const data = await res.json();
+        return data.response;
+    };
     const handleImageUpload = async (file) => {
         const uploaded = await uploadImageToGridFS(file, user.uid);
         return uploaded;
