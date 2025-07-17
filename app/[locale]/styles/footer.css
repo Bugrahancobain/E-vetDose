@@ -16,7 +16,6 @@
     align-items: center;
     width: 100%;
     padding: 50px 0px;
-    border-bottom: 1px solid white;
 }
 
 .footerContactDiv, .footerResourcesDiv{
@@ -59,6 +58,7 @@
 }
 
 .policyModalOverlay {
+    color: black;
     position: fixed;
     top: 0;
     left: 0;
@@ -72,6 +72,7 @@
 }
 
 .policyModal {
+    color: black;
     background-color: white;
     padding: 30px;
     border-radius: 12px;
@@ -84,6 +85,7 @@
 
 .policyModal h2 {
     font-size: 24px;
+    color: black;
     margin-bottom: 20px;
 }
 
@@ -91,10 +93,12 @@
     margin-bottom: 15px;
     font-size: 16px;
     line-height: 1.6;
+    color: black;
     color: #333;
 }
 
 .policyModalContent strong{
+    color: black;
     color: black;
 }
 
